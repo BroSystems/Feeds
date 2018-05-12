@@ -1,3 +1,9 @@
+# Dev Dependencies
+
+1.  mongo , mysql
+2.  node v8.11.1 or higher
+3.  npm v5.6.0 or higher
+
 # Installation
 
     npm install
