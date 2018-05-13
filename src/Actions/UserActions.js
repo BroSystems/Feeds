@@ -23,15 +23,16 @@ export const passwordChanged = password => {
 
 export const registerNewUser = (username, password) => {
     // request to register to database
-    // console.log(`Requested To Register ${username} with ${password}`);
 
     if (isValidEmail(username) && isValidPassword(password) && !isUserExist(username)) {
         database.insert({ username, password });
+        console.log(`Registered ${username} with ${password}`);
         return {
             type: REGISTER_USER,
             payload: true
         };
     }
+    console.log(`Failed to Register ${username} with ${password}`);
     return {
         type: REGISTER_USER,
         payload: false

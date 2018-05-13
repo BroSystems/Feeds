@@ -30,12 +30,12 @@ class LoginComponent extends Component {
 
   onLoginPressed() {
     const { username, password } = this.props;
-    this.props.authenticateUser({ username,password });
+    this.props.authenticateUser(username,password);
   }
 
   onRegisterPressed() {
     const { username, password } = this.props;
-    this.props.registerNewUser({ username,password });
+    this.props.registerNewUser(username,password);
   }
 
   renderBottomPart() {
