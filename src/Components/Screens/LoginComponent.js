@@ -10,12 +10,7 @@ import {
   RkComponent
 } from 'react-native-ui-kitten';
 
-import {
-  usernameChanged, 
-  passwordChanged,
-  authenticateUser,
-  registerNewUser
-} from '../../Actions';
+import * as actions from '../../Actions/UserActions';
 
 class LoginComponent extends Component {
 
@@ -24,24 +19,29 @@ class LoginComponent extends Component {
   }
 
   onUsernameChange(text) {
-    usernameChanged(text => {
+    this.props.usernameChanged(text => {
       console.log(text);
     });
   }
 
   onPasswordChange(text) {
-    passwordChanged(text);
+    this.props.passwordChanged(text);
   }
 
   onLoginPressed() {
     const { username, password } = this.props;
-    this.props.authenticateUser({ username,password });
+    this.props.authenticateUser({
+      username,
+      password
+    });
   }
 
   onRegisterPressed() {
     const { username, password } = this.props;
     console.log(this.props.username);
-    this.props.registerNewUser(username,password);
+    this.props.registerNewUser((username,password) => {
+      console.log(object)
+    });
   }
 
   render() {
@@ -95,21 +95,12 @@ const styles = {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    usernameChanged: username => dispatch(usernameChanged(username)),
-    passwordChanged: dispatch(passwordChanged),
-    authenticateUser: authenticateUser,
-    registerNewUser: registerNewUser
-  }
-}
-const mapStateToProps = state => {
+const mapStateToProps = ({ user }) => {
   // const { username, password, isPending, isLogged, isRegistered } = state.user
-  console.log(`new state = ${state.user}`);
   return {
-    username: state.user.username,
-    password: state.user.password
+    username: user.username,
+    password: user.password
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export default connect(mapStateToProps, actions)(LoginComponent);
