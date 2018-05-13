@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  View
+  View,
+  Text
 } from 'react-native';
 import {
   RkButton,
   RkTextInput,
   RkCard,
-  RkComponent
+  RkComponent,
+  RkText
 } from 'react-native-ui-kitten';
 
 import * as actions from '../../Actions/UserActions';
@@ -19,9 +21,7 @@ class LoginComponent extends Component {
   }
 
   onUsernameChange(text) {
-    this.props.usernameChanged(text => {
-      console.log(text);
-    });
+    this.props.usernameChanged(text);
   }
 
   onPasswordChange(text) {
@@ -30,18 +30,22 @@ class LoginComponent extends Component {
 
   onLoginPressed() {
     const { username, password } = this.props;
-    this.props.authenticateUser({
-      username,
-      password
-    });
+    this.props.authenticateUser({ username,password });
   }
 
   onRegisterPressed() {
     const { username, password } = this.props;
-    console.log(this.props.username);
-    this.props.registerNewUser((username,password) => {
-      console.log(object)
-    });
+    this.props.registerNewUser({ username,password });
+  }
+
+  renderBottomPart() {
+    if (this.props.isLogged) {
+      return (<RkText>Login Successfully!</RkText>)
+    } else if (this.props.isRegistered) {
+      return (<RkText>Registered Successfully!</RkText>)
+    } else {
+      return (<RkText>enter your credentials in order to log in</RkText>)
+    }
   }
 
   render() {
@@ -64,6 +68,7 @@ class LoginComponent extends Component {
               value= {this.props.password}
               onChangeText={this.onPasswordChange.bind(this)}
               secureTextEntry={true}/>
+            {this.renderBottomPart()}
         </RkCard>
         <RkButton 
             style={styles.button}
@@ -96,10 +101,13 @@ const styles = {
 }
 
 const mapStateToProps = ({ user }) => {
-  // const { username, password, isPending, isLogged, isRegistered } = state.user
+  const { username, password, isPending, isLogged, isRegistered } = user
   return {
-    username: user.username,
-    password: user.password
+    username,
+    password,
+    isPending,
+    isLogged,
+    isRegistered
   }
 }
 

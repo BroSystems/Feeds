@@ -23,9 +23,9 @@ export const passwordChanged = password => {
 
 export const registerNewUser = (username, password) => {
     // request to register to database
-    console.log(`Requested To Register - ${username} to the system`);
+    // console.log(`Requested To Register ${username} with ${password}`);
 
-    if (database.select(row => row.username == username).length == 0) {
+    if (isValidEmail(username) && isValidPassword(password) && !isUserExist(username)) {
         database.insert({ username, password });
         return {
             type: REGISTER_USER,
@@ -40,10 +40,12 @@ export const registerNewUser = (username, password) => {
     
 };
 
-export const authenticateUser = ({ username = '', password = '' }) => {
+export const authenticateUser = (username = '', password = '') => {
     // request to login to database
-    console.log(`Requested To Login - ${username,password} to the system`);
-    if (database.select(row => row.username == username && row.password == password)) {
+    // console.log(`Requested To Login - ${username,password} to the system`);
+    const row = database.selectOne(row => row.username == username);
+
+    if (row != null && row.password == password) {
         return {
             type: LOGIN_USER,
             payload: true
@@ -56,16 +58,21 @@ export const authenticateUser = ({ username = '', password = '' }) => {
     };
 };
 
-const isValidUserName = username => {
-    if (username != null && username.length > 0) {
-        return true;
+const isValidEmail = email => {
+    if (email != null && email.length > 0) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
     return false;
 };
 
 const isValidPassword = password => {
-    if (password != null && password.length > 0) {
+    if (password != null && password.length > 4 && password.length < 20) {
         return true;
     }
     return false;
 };
+
+const isUserExist = username => {
+    return database.selectOne(row => row.username == username) != null;
+}
