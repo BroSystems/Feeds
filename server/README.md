@@ -1,5 +1,5 @@
 
-# Dev Dependencies
+# Dev Dependencies  👩‍💻 👨‍💻
 
 	 1. mongo , mysql
        
@@ -9,7 +9,7 @@
 
   
 
-# Installation
+# Installation 🛸
 
   
 
@@ -21,7 +21,7 @@
 
   
 
-## Run
+## Run 🚀
 
   
 
@@ -29,7 +29,7 @@
 
   
 
-## todo
+## todo  📋
 
   
 
