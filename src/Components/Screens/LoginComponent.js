@@ -49,13 +49,6 @@ class LoginComponent extends Component {
   }
 
   render() {
-    if (this.props.isLogged) {
-      return (
-        <View>
-          <Text>{`${this.props.username} has logged in successfully`}</Text>
-        </View>
-      );
-    }
     return (
       <View style={styles.container}>
         <RkCard>
