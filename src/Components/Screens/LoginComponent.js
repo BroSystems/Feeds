@@ -6,84 +6,110 @@ import {
 import {
   RkButton,
   RkTextInput,
-  RkCard
+  RkCard,
+  RkComponent
 } from 'react-native-ui-kitten';
 
 import {
-  usernameEntered, 
-  passwordEntered,
+  usernameChanged, 
+  passwordChanged,
   authenticateUser,
   registerNewUser
 } from '../../Actions';
 
 class LoginComponent extends Component {
 
+  constructor() {
+    super();
+  }
+
   onUsernameChange(text) {
-    console.log(`Entered Email Is: ${text}`);
-    usernameEntered(text);
+    usernameChanged(text => {
+      console.log(text);
+    });
   }
 
   onPasswordChange(text) {
-    console.log(`Entered Password Is: ${text}`);
-    passwordEntered(text);
+    passwordChanged(text);
   }
 
   onLoginPressed() {
-    console.log(this.props);
-    authenticateUser(this.props);
+    const { username, password } = this.props;
+    this.props.authenticateUser({ username,password });
   }
 
   onRegisterPressed() {
-    console.log("Register Pressed");
-    registerNewUser(this.props);
+    const { username, password } = this.props;
+    console.log(this.props.username);
+    this.props.registerNewUser(username,password);
   }
 
   render() {
+    if (this.props.isLogged) {
+      return (
+        <View>
+          <Text>{`${this.props.username} has logged in successfully`}</Text>
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <RkCard>
           <RkTextInput 
-              label='Username'
-              placeholder='aaa@aaa.aaa'
+              placeholder='Email'
+              value= {this.props.username}
               onChangeText={this.onUsernameChange.bind(this)}/>
             <RkTextInput 
-              label='Password'
-              placeholder='********'
+              placeholder='Password'
+              value= {this.props.password}
               onChangeText={this.onPasswordChange.bind(this)}
               secureTextEntry={true}/>
         </RkCard>
-          <RkButton 
-              style={styles.button}
-              onPress={this.onLoginPressed.bind(this)}>
-                Login
-              </RkButton>
-          <RkButton 
-              style={styles.button}
-              onPress={this.onRegisterPressed.bind(this)}>
-                  Register
-              </RkButton>
+        <RkButton 
+            style={styles.button}
+            onPress={this.onLoginPressed.bind(this)}
+            enabled={false}>
+          Login
+        </RkButton>
+        <RkButton 
+            style={styles.button}
+            onPress={this.onRegisterPressed.bind(this)}>
+          Register
+        </RkButton>
       </View>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  console.log(`new state = ${state}`);
-  return {
-    username: state.username,
-    password: state.password
-  }
-}
-
-export default connect(mapStateToProps)(LoginComponent);
-
-export const styles = {
+const styles = {
   container: {
     display: 'flex',
-    margin: 12
+    padding: 12,
+    justifyContent: 'center',
+    backgroundColor: '#f1f1f1',
+    height: '100%'
   },
   button: {
     alignSelf: 'center',
     padding: 12,
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    usernameChanged: username => dispatch(usernameChanged(username)),
+    passwordChanged: dispatch(passwordChanged),
+    authenticateUser: authenticateUser,
+    registerNewUser: registerNewUser
+  }
+}
+const mapStateToProps = state => {
+  // const { username, password, isPending, isLogged, isRegistered } = state.user
+  console.log(`new state = ${state.user}`);
+  return {
+    username: state.user.username,
+    password: state.user.password
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

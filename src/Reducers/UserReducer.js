@@ -6,15 +6,16 @@ import {
     REGISTER_USER
 } from '../Actions/Types';
 
-USER_INITIAL_STATE = {
-    username: null,
-    selectedPassword: null,
+const USER_INITIAL_STATE = {
+    username: '',
+    password: '',
     isPending: false,
     isLogged: false,
     isRegistered: false
 };
 
-export default UserReducer = (state = USER_INITIAL_STATE, action) => {
+export default (state = USER_INITIAL_STATE, action) => {
+    console.log(`state - ${state}, action - ${action.type}`);
     switch (action.type) {
         case USERNAME_ENTERED:
             return { ...state, username: action.payload}
