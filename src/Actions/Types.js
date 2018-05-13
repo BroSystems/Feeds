@@ -1,4 +1,13 @@
+/* User Action Types */
 export const USERNAME_ENTERED = "USERNAME_ENTERED";
 export const PASSWORD_ENTERED = "PASSWORD_ENTERED";
 export const LOGIN_USER = "LOGIN_USER";
 export const REGISTER_USER = "REGISTER_USER";
+
+/* Feed Action Types */
+export const CREATE_FEED_SUCCESS = "CREATE_FEED_SUCCESS";
+export const CREATE_FEED_FAILED = "CREATE_FEED_FAILED";
+export const DELETE_FEED_SUCCESS = "DELETE_FEED_SUCCESS";
+export const DELETE_FEED_FAILED = "DELETE_FEED_FAILED";
+export const GET_FEED_LIST = "GET_FEED_LIST";
+export const GET_FEED_MESSAGES = "GET_FEED_MESSAGES";
