@@ -36,6 +36,7 @@
  - [ ] dev enviorment
  - [ ] test enviorment
  - [ ] staging
+ - [ ] docker with node mysql mongo
 
   
 
