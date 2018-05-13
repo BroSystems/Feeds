@@ -8,10 +8,6 @@ export const deleteFeed = (name) => {
 
 };
 
-export const getFeedMessages = (name, pageNumber) => {
-
-};
-
 export const getFeedList = (pageNumber) => {
 
 };
