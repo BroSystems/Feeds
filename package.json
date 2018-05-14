@@ -8,11 +8,13 @@
     "babel-preset-react": "^6.24.1",
     "jest": "^22.4.3",
     "jest-expo": "~27.0.0",
+    "react-native-debugger-open": "^0.3.17",
     "react-native-scripts": "1.14.0",
     "react-test-renderer": "^16.3.2"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
+    "postinstall": "rndebugger-open",
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
