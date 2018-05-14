@@ -12,7 +12,7 @@ import {
   RkText
 } from 'react-native-ui-kitten';
 
-import * as actions from '../../Actions/UserActions';
+import * as actions from '../../../Actions/UserActions';
 
 class LoginComponent extends Component {
 

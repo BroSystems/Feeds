@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Scene, Stack } from 'react-native-router-flux';
-import FeedsListComponent from './src/Components/Screens/FeedsListComponent';
-import LoginComponent from './src/Components/Screens/LoginComponent';
+import FeedsListComponent from './src/Components/Screens/Feeds/FeedsListComponent';
+import LoginComponent from './src/Components/Screens/Auth/LoginComponent';
 
 export default DefaultNavigator = () => {
     return (
@@ -12,11 +12,12 @@ export default DefaultNavigator = () => {
                     key='login'
                     component={LoginComponent}
                     title='Login'
-                    initial/>
+                    />
                 <Scene
                     key='feedsList'
                     component={FeedsListComponent}
-                    title='Feeds'/>
+                    title='Feeds'
+                    initial/>
             </Scene>
         </Router>
     );
