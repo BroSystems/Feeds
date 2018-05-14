@@ -11,7 +11,7 @@ import { Actions } from 'react-native-router-flux';
 export const usernameChanged = username => {
     return {
         type: USERNAME_ENTERED,
-        payload: username
+        payload: String(username).toLowerCase()
     };
 };
 
@@ -24,7 +24,6 @@ export const passwordChanged = password => {
 
 export const registerNewUser = (username, password) => {
     // request to register to database
-
     if (isValidEmail(username) && isValidPassword(password) && !isUserExist(username)) {
         database.insert({ username, password });
         console.log(`Registered ${username} with ${password}`);

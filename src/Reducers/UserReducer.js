@@ -23,7 +23,12 @@ export default (state = USER_INITIAL_STATE, action) => {
         case LOGIN_USER:
             return { ...state, isLogged: action.payload}
         case REGISTER_USER:
-            return { ...state, isRegistered: action.payload, username: '', password: ''}
+            if (action.payload) {
+                return { ...state, isRegistered: action.payload, username: '', password: ''}
+            } else {
+                return { ...state, isRegistered: action.payload}
+            }
+            
         default: return state;
     }
 };
