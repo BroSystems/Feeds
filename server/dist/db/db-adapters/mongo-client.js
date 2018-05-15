@@ -13,7 +13,7 @@ var mongoRequest = function mongoRequest(dbCallBack) {
     });
 };
 
-module.export = function (options) {
+module.exports = function (options) {
     var createDefaultTables = function createDefaultTables(err, db) {
         defaultTables.forEach(function (table) {
             db.createCollection(table, function (err, collection) {});

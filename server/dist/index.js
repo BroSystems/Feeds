@@ -2,16 +2,11 @@
 
 var express = require('express');
 var app = express();
+var db = require("./db/db-connector");
 
-var _require = require('./routes/index'),
-    groups = _require.groups,
-    users = _require.users;
-
-console.log(groups);
-console.log(users);
 app.use(express.static('public'));
-app.use("/users", users);
-app.use("/groups", groups);
+app.use("/users", require('./routes/users'));
+app.use("/groups", require('./routes/groups'));
 
 var server = app.listen(8000, function () {
     var host = server.address().address;

@@ -7,7 +7,7 @@ router.get('/login', function (req, res) {
     res.send('login');
 });
 
-router.get('/sign_in', function (req, res) {
+router.get('/signin', function (req, res) {
     res.send('sign_in');
 });
 
