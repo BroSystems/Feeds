@@ -1,41 +1,79 @@
-# Dev Dependencies
 
-1.  mongo , mysql
-2.  node v8.11.1 or higher
-3.  npm v5.6.0 or higher
+# Dev Dependencies  👩‍💻 👨‍💻
 
-# Installation
+	 1. mongo , mysql
+       
+     2. node v8.11.1 or higher
+       
+     3. npm v5.6.0 or higher
 
-    npm install -g nodemon
+  
 
-    npm install
+# Installation 🛸
 
-## run
+  
 
-    npm run start
+	npm install -g nodemon
 
-## todo
+	  
 
-1.  dev enviorment
-2.  test enviorment
-3.  staging
+	npm install
 
-## current endpoints
+  
 
-# users
+## Run 🚀
 
-1.  'users/login'
+  
 
-2.  'users/signin'
+	npm run start
 
-3.  'users/register
+  
 
-4.  'users/:id - get user by id
+## todo  📋
 
-# groups
+  
 
-1.  'groups/create_group'
+ - [ ] dev enviorment
+ - [ ] test enviorment
+ - [ ] staging
+ - [ ] docker with node mysql mongo
 
-2.  'groups/:id' - get group by id
+  
 
-3.  'groups/delete_group'
+# current endpoints
+
+  
+
+## users
+
+  
+
+1. 'users/login'
+
+  
+
+2. 'users/signin'
+
+  
+
+3. 'users/register
+
+  
+
+4. 'users/:id - get user by id
+
+  
+
+## groups
+
+  
+
+1. 'groups/create_group'
+
+  
+
+2. 'groups/:id' - get group by id
+
+  
+
+3. 'groups/delete_group'
