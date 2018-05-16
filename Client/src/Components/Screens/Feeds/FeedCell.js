@@ -10,6 +10,13 @@ import {
 } from 'react-native';
 
 export default FeedCell = ({ item , onPress = (item) => {}}) => {
+    if (!item) {
+        return (
+            <View>
+                <Text>Item is Undefined</Text>
+            </View>
+        )
+    }
     return (
         <TouchableHighlight
             key={item.id}
