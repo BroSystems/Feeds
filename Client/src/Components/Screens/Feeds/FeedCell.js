@@ -6,13 +6,22 @@ import {
     View,
     ImageBackground,
     Text,
+    TouchableHighlight
 } from 'react-native';
 
-export default FeedCell = ({ item }) => {
+export default FeedCell = ({ item , onPress = (item) => {}}) => {
+    if (!item) {
+        return (
+            <View>
+                <Text>Item is Undefined</Text>
+            </View>
+        )
+    }
     return (
-        <View 
+        <TouchableHighlight
             key={item.id}
-            style={styles.item}>
+            style={styles.item}
+            onPress={onPress(item)}>
             <ImageBackground 
                 style ={styles.image} 
                 source={Background}
@@ -27,7 +36,7 @@ export default FeedCell = ({ item }) => {
                         </Text>
                     </View>
             </ImageBackground>
-        </View>
+        </TouchableHighlight>
     );
 };
 
