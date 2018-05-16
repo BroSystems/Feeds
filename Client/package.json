@@ -1,0 +1,38 @@
+{
+  "name": "Feeds",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^22.4.3",
+    "jest-expo": "~27.0.0",
+    "react-native-debugger-open": "^0.3.17",
+    "react-native-scripts": "1.14.0",
+    "react-test-renderer": "^16.3.2"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "postinstall": "rndebugger-open",
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "chance": "^1.0.16",
+    "expo": "^27.0.1",
+    "react": "16.3.1",
+    "react-native": "~0.55.2",
+    "react-native-router-flux": "^4.0.0-beta.28",
+    "react-native-ui-kitten": "^3.0.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  }
+}
