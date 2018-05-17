@@ -58,8 +58,9 @@ class FeedsListComponent extends Component {
 
     render() {
         return (
-            <View styles = {styles.container}>
+            <View style = {styles.container}>
                 <ListView
+                    style={ styles.list }
                     dataSource={this.state.dataSource}
                     renderRow={ feed => this.renderFeed(feed) }
                 />
@@ -73,7 +74,9 @@ export default connect(null, actions)(FeedsListComponent)
 const styles = {
     container: {
         flex:1,
-        left: 12,
-        right: 12,
     },
+    list: {
+        flex:1,
+        margin: 12,
+    }
 };
