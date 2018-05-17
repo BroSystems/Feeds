@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import {
     View,
@@ -8,18 +8,16 @@ import {
 
 import FeedCell from '../Feeds/FeedCell';
 
-export class MessageListComponent extends React.Component {
-    
+export default class MessageListComponent extends Component {
     render() {
         const item = {
             id: 0,
             name: 'feed 1',
-            image: Background
         };
 
         return (
             <View style={styles.container}>
-                {FeedCell({item})}
+                <FeedCell item={ item }/>
                 <Text>Messages Component</Text>
             </View>
         );
