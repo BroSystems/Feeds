@@ -6,22 +6,25 @@ import {
     View,
     ImageBackground,
     Text,
-    TouchableHighlight
+    TouchableOpacity,
+    TouchableWithoutFeedback
 } from 'react-native';
 
-export default FeedCell = ({ item , onPress = (item) => {}}) => {
-    if (!item) {
+export default FeedCell = (props) => {
+    if (!props) {
         return (
             <View>
                 <Text>Item is Undefined</Text>
             </View>
         )
     }
+    console.log(props);
+    const {item, onPress} = props;
     return (
-        <TouchableHighlight
+        <TouchableWithoutFeedback
             key={item.id}
             style={styles.item}
-            onPress={onPress(item)}>
+            onPress={event => onPress(item)}>
             <ImageBackground 
                 style ={styles.image} 
                 source={Background}
@@ -36,13 +39,12 @@ export default FeedCell = ({ item , onPress = (item) => {}}) => {
                         </Text>
                     </View>
             </ImageBackground>
-        </TouchableHighlight>
+        </TouchableWithoutFeedback>
     );
 };
 
 const styles = {
     item: {
-        margin: 12,
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
