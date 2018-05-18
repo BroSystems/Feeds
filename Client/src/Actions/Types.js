@@ -9,3 +9,7 @@ export const CREATE_FEED_SUCCESS = "CREATE_FEED";
 export const DELETE_FEED_SUCCESS = "DELETE_FEED";
 export const GET_FEED_LIST = "GET_FEED_LIST";
 export const FEED_ACTION_FAILED = "FEED_ACTION_FAILED";
+
+/* Message Board Types */
+export const FETCH_MESSAGES = "FETCH_MESSAGES";
+export const POST_MESSAGE = "POST_MESSAGE";
