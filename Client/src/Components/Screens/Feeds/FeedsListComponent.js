@@ -33,7 +33,9 @@ class FeedsListComponent extends Component {
             5: { name: 'feed 6', image: Background },
             6: { name: 'feed 7', image: Background }
         }
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2
+        });
 
         this.state = {
             feeds,
@@ -45,7 +47,6 @@ class FeedsListComponent extends Component {
         console.log(feed);
         return (
             <FeedCell 
-                key={ feed.id }
                 item = {feed} 
                 onPress = {this.onRowSelection}/>
         );
@@ -53,14 +54,19 @@ class FeedsListComponent extends Component {
 
     onRowSelection(item) {
         console.log(item);
-        Actions.messageBoard();
+        try {
+            Actions.messageBoard();
+        } catch(error) {
+            console.log(error);
+        }
     }
 
     render() {
         return (
             <View style = {styles.container}>
                 <ListView
-                    style={ styles.list }
+                    style={{ flex: 1 }}
+                    contentContainerStyle={{ margin: 12,}}
                     dataSource={this.state.dataSource}
                     renderRow={ feed => this.renderFeed(feed) }
                 />
@@ -77,6 +83,5 @@ const styles = {
     },
     list: {
         flex:1,
-        margin: 12,
-    }
+    },
 };

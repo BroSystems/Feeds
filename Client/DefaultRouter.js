@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Scene, Stack } from 'react-native-router-flux';
 import FeedsListComponent from './src/Components/Screens/Feeds/FeedsListComponent';
 import LoginComponent from './src/Components/Screens/Auth/LoginComponent';
-import MessageListComponent from './src/Components/Screens/Messages/MessageListComponent';
+import MessageBoardComponent from './src/Components/Screens/Messages/MessageBoardComponent';
 
 export default DefaultNavigator = () => {
     return (
@@ -21,7 +21,7 @@ export default DefaultNavigator = () => {
                     initial/>
                 <Scene
                     key='messageBoard'
-                    component={ MessageListComponent }
+                    component={MessageBoardComponent}
                     title='Messages'
                     />    
                 </Scene>

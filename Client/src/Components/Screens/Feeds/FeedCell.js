@@ -11,19 +11,18 @@ import {
 } from 'react-native';
 
 export default FeedCell = (props) => {
-    if (!props) {
+    const { item, onPress, style, isHeader = false} = props;
+
+    if (!item) {
         return (
             <View>
                 <Text>Item is Undefined</Text>
             </View>
         )
     }
-    console.log(props);
-    const {item, onPress} = props;
     return (
         <TouchableWithoutFeedback
-            key={item.id}
-            style={styles.item}
+            style = {[style, isHeader ? styles.header : styles.item]}
             onPress={event => onPress(item)}>
             <ImageBackground 
                 style ={styles.image} 
@@ -38,16 +37,22 @@ export default FeedCell = (props) => {
                             Inside the extraordinary world of Monument Valley 2
                         </Text>
                     </View>
+                    <View style={{ height: 8 }}/>
             </ImageBackground>
         </TouchableWithoutFeedback>
     );
 };
 
 const styles = {
-    item: {
+    header: {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
+    },
+    item: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         shadowOffset: {
             width: 0,
             height: 12
@@ -55,13 +60,11 @@ const styles = {
         shadowOpacity: 0.16,
         shadowColor: '#000000',
         shadowRadius: 12,
+        marginBottom: 8,
     },
     image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
+        aspectRatio: 1,
         position: 'relative',
-        minHeight: 350,
         borderRadius: 12,
         borderWidth: 1,
         borderColor: 'transparent',
