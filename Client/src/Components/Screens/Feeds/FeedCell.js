@@ -6,10 +6,13 @@ import {
     View,
     ImageBackground,
     Text,
-    TouchableHighlight
+    TouchableOpacity,
+    TouchableWithoutFeedback
 } from 'react-native';
 
-export default FeedCell = ({ item , onPress = (item) => {}}) => {
+export default FeedCell = (props) => {
+    const { item, onPress, style, isHeader = false} = props;
+
     if (!item) {
         return (
             <View>
@@ -18,10 +21,9 @@ export default FeedCell = ({ item , onPress = (item) => {}}) => {
         )
     }
     return (
-        <TouchableHighlight
-            key={item.id}
-            style={styles.item}
-            onPress={onPress(item)}>
+        <TouchableWithoutFeedback
+            style = {[style, isHeader ? styles.header : styles.item]}
+            onPress={event => onPress(item)}>
             <ImageBackground 
                 style ={styles.image} 
                 source={Background}
@@ -35,17 +37,22 @@ export default FeedCell = ({ item , onPress = (item) => {}}) => {
                             Inside the extraordinary world of Monument Valley 2
                         </Text>
                     </View>
+                    <View style={{ height: 8 }}/>
             </ImageBackground>
-        </TouchableHighlight>
+        </TouchableWithoutFeedback>
     );
 };
 
 const styles = {
-    item: {
-        margin: 12,
+    header: {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
+    },
+    item: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         shadowOffset: {
             width: 0,
             height: 12
@@ -53,13 +60,11 @@ const styles = {
         shadowOpacity: 0.16,
         shadowColor: '#000000',
         shadowRadius: 12,
+        marginBottom: 8,
     },
     image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
+        aspectRatio: 1,
         position: 'relative',
-        minHeight: 350,
         borderRadius: 12,
         borderWidth: 1,
         borderColor: 'transparent',

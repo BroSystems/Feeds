@@ -1,0 +1,1 @@
+export MessageTopPart from './MessageTopPart';
