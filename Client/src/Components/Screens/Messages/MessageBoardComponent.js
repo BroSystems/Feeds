@@ -1,75 +1,48 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import MessageItem from './MessageItem';
-
+import * as actions from '../../../Actions/MessageBoardActions';
 import {
     View,
     Text,
     ListView,
 } from 'react-native';
 
-// import FeedCell from '../Feeds/FeedCell';
+import MessageItem from './MessageItem';
+import FeedCell from '../Feeds/FeedCell';
 
-export default class MessageBoardComponent extends Component {
+
+class MessageBoardComponent extends Component {
 
     constructor() {
         super();
         this.renderMessage = this.renderMessage.bind(this);
-        /*
-        |top
-        |---user
-        |------username
-        |------rank
-        |middle
-        |---message
-        |------data
-        |---------Detail1
-        |------------element: Text 
-        |------------value: 'hello' 
-        |---------Detail2
-        |------------element: Text 
-        |------------value: 'world' 
-        |---------Image
-        |------------element: Image
-        |------------value: 'link to the image' 
-        |---------Description
-        |------------element: Text
-        |------------value: 'product description'
-        |------style
-        |------------Detail1: style
-        |------------Detail2: style
-        |------------Image: style
-        |------------Description: style
-        |bottom
-        |---actions
-        |------labels
-        |---------UpVote
-        |------------label: '', 
-        |------------icon:''
-        */
+        this.renderList = this.renderList.bind(this);
+    }
 
-        const messages = {
-            0: { top: {
-                username: 'username 1',
-                userRank: 'member'
-            }, middle: {
-                message: {
-                    details:[], 
-                    description:'' 
-                }
-            }, bottom: {
-                
-            }},
+    componentWillMount() {
+        const { messages, feed, error } = this.props;
+        const params = {
+            page: messages.page,
+            feed,
+            userId: ''
         };
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-
-        this.state = {
-            messages,
-            dataSource: ds.cloneWithRows(messages),
-        };
+        this.props.fetchMessages(params);
+    }
+    
+    renderList() {
+        console.log(`isEmpty? =  ${!this.props.messages.data || this.props.messages.data.length <= 0}`);
+        if (!this.props.messages.data || this.props.messages.data.length <= 0) {
+            return (
+                <Text style={{ textAlign:'center' }}>No Messages To Present</Text>
+            );
+        } else {
+            return (
+                <ListView
+                    dataSource={ this.props.dataSource }
+                    renderRow={ this.renderMessage }
+                />    
+            );
+        }
     }
 
     renderMessage(message) {
@@ -83,18 +56,34 @@ export default class MessageBoardComponent extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                <ListView
-                    dataSource={ this.state.dataSource }
-                    renderRow={ this.renderMessage }
-                />
+                {this.renderList()}
             </View>
         );
     }
 }
 
+const mapStateToProps = ({ board }) => {
+    console.log('board - ' + JSON.stringify(board,null, 2));
+    const { messages, feed, error } = board;
+    
+    const ds = new ListView.DataSource({
+        rowHasChanged: (r1, r2) => r1 !== r2
+    });
+
+    return {
+        messages,
+        feed,
+        error,
+        dataSource: ds.cloneWithRows(messages.data)
+    };
+}
+
+export default connect(mapStateToProps, actions)(MessageBoardComponent);
+
 const styles = {
     container: {
         flex: 1,
+        justifyContent: 'center',
         alignContent: 'center',
     }
 };
