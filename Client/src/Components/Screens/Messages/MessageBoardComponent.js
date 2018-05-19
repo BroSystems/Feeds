@@ -63,13 +63,10 @@ class MessageBoardComponent extends Component {
 }
 
 const mapStateToProps = ({ board }) => {
-    console.log('board - ' + JSON.stringify(board,null, 2));
     const { messages, feed, error } = board;
-    
     const ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2
     });
-
     return {
         messages,
         feed,

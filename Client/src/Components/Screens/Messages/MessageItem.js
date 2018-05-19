@@ -15,6 +15,7 @@ import {
 
 // create a component
 export default MessageItem = (props) => {
+    console.log('MessageItem - ' + JSON.stringify(props,null,2));
 
     if (!props) {
         return <View/>

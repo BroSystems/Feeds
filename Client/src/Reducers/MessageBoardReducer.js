@@ -15,8 +15,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    console.log('state - ' + JSON.stringify(state, null, 2));
-    console.log('action - ' + action.type);
     switch (action.type) {
         case FETCH_MESSAGES:
             if (!action.payload) {

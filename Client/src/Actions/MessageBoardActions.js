@@ -42,7 +42,6 @@ const messages = [{
 }];
 
 export const fetchMessages = ({ page = 0, feed = null, userId = '' }) => {
-    console.log('Ran Fetch Messages');
     return {
         type: FETCH_MESSAGES,
         payload: { 

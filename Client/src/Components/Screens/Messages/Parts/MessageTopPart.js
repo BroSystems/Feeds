@@ -8,8 +8,8 @@ import {
 
 // create a component
 const MessageTopPart = (props) => {
-    console.log(props.part);
-    const title  = props.part;
+    const user = props.part.user;
+    console.log(user);
     return (
         <View style={ styles.container }>
             <Avatar
