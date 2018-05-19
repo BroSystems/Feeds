@@ -15,22 +15,20 @@ import {
 
 // create a component
 export default MessageItem = (props) => {
-    console.log('MessageItem - ' + JSON.stringify(props,null,2));
-
     if (!props) {
         return <View/>
     }
 
-    const { top, middle, bottom } = props.message;
+    const { top, middle, bottom } = props.message.data;
 
     return (
         <Card>
             <MessageTopPart part={ top }/>
             <View style={styles.container}>
-                <Text>{middle}</Text>
+                <Text>Empty</Text>
             </View>
             <View style={styles.container}>
-                <Text>{bottom}</Text>
+                <Text>Bottom</Text>
             </View>
         </Card>
     );
