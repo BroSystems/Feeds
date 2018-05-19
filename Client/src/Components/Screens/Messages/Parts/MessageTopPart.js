@@ -1,25 +1,31 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { 
+    View, 
+    Text,
+    StyleSheet 
+} from 'react-native';
 import {
     Avatar,
-    Text
 } from 'react-native-elements';
 
 // create a component
 const MessageTopPart = (props) => {
     const user = props.part.user;
     console.log(user);
+    
     return (
         <View style={ styles.container }>
             <Avatar
                 medium
+                rounded
                 style={ styles.avatar }
                 onPress={() => console.log("Works!")}
-                activeOpacity={0.7}/>
+                activeOpacity={0.7}
+                source={{ uri: user.picture_url }}/>
             <View style={ styles.labelsStack }>
-                <Text style={ styles.text }>{title}</Text>
-                <Text style={ styles.text }>{title}</Text>
+                <Text style={ styles.text }>{user.username}</Text>
+                <Text style={ styles.text }>{user.rank}</Text>
             </View>
         </View>
     );
