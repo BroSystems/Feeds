@@ -1,58 +1,45 @@
+import axios from 'axios';
+
 import {
     FETCH_MESSAGES,
     POST_MESSAGE
 } from './Types';
 
-const messages = [{
-    id: 0,
-    data: {
-        top: {
-            user: {
-                username: '',
-                rank: 0
-            }
-        },
-        middle: {
-            message: {
-                data: {
-                    from: 'Be\'er Sheva',
-                    to: 'Tel Aviv',
-                    depart_time: '2222-02-31T18:25:43.511Z',
-                    sits: 4,
-                    car_type: 'Lamburgini Diablo',
-                    description: 'hi fuckers,\nThere isn\'t to much space for lugage so fuck you'
-                }
-            }
-        },
-        bottom: {
-            actions: {
-                like: {
-                    label: 'Upvote Driver',
-                    icon: null,
-                    initial_value: true
-                },
-                add_self: {
-                    label: 'Join',
-                    icon: null,
-                    initial_value: false
-                }
-            }
-        }
-    }
-}];
+const messages_json = require('../../Data/MOCK_DATA.json');
 
-export const fetchMessages = ({ page = 0, feed = null, userId = '' }) => {
-    return {
-        type: FETCH_MESSAGES,
-        payload: { 
-            data: {
-                data: messages,
-                page: page + 1,
-                feed: feed,
-            },
-            error: null
-        }
-    };
+export const fetchMessages = ({page = 0,feed = null,userId = ''}) => {
+
+    return dispatch => {
+        const request = axios.get('https://api.mockaroo.com/api/acb6b990?count=10&key=ac886280');
+
+        request
+            .then(json => {
+                dispatch({
+                    type: FETCH_MESSAGES,
+                    payload: {
+                        data: {
+                            data: json.data,
+                            page: page + 1,
+                            feed: feed,
+                        },
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(`Error Occured Fetching Messages - ${error}`);
+                dispatch({
+                    type: FETCH_MESSAGES,
+                    payload: {
+                        data: {
+                            data: [],
+                            page: page + 1,
+                            feed: feed,
+                        },
+                        error: error
+                    }
+                });
+            });
+    }
 };
 
 // export const postMessage = ({ message = {}, userId }) => {
@@ -69,7 +56,7 @@ export const fetchMessages = ({ page = 0, feed = null, userId = '' }) => {
 
 
 // Stubs
-        /*
+/*
         |top
         |---user
         |------username
@@ -95,4 +82,3 @@ export const fetchMessages = ({ page = 0, feed = null, userId = '' }) => {
         |------like:
         |---------value:'',
 */
-

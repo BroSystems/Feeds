@@ -20,8 +20,9 @@ export default (state = INITIAL_STATE, action) => {
             if (!action.payload) {
                 return state;
             }
+            console.log(action.payload);
             const { data, page, feed} = action.payload.data;
-            return { ...state, 
+            return {...state, 
                 messages: {
                     data:[...data],
                     page: page,
