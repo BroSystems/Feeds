@@ -15,14 +15,8 @@ const FEEDS_INITIAL_STATE = {
 
 export default (state = FEEDS_INITIAL_STATE, action) => {
     switch(action.type) {
-        case CREATE_FEED: 
-            return { ...state, newFeed: action.payload };
-        case DELETE_FEED:
-            return { ...state, feeds: action.payload };
         case GET_FEED_LIST:
             return { ...state, feeds: action.payload, pageNumber: state.pageNumber + 1 };
-        case FEED_ACTION_FAILED:
-            return { ...state, error: action.payload };
         default: 
             return state
     }
