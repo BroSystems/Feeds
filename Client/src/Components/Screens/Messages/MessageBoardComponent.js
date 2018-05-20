@@ -19,8 +19,12 @@ class MessageBoardComponent extends Component {
         this.renderList = this.renderList.bind(this);
     }
 
-    componentWillMount() {
-        const { messages, feed, error } = this.props;
+    componentDidMount() {
+        console.log(this.props);
+        
+        const feed = this.props.navigation.state.params;
+        
+        const { messages, error } = this.props;
         const params = {
             page: messages.page,
             feed,
@@ -30,11 +34,14 @@ class MessageBoardComponent extends Component {
     }
     
     renderList() {
-        console.log(`isEmpty? =  ${!this.props.messages.data || this.props.messages.data.length <= 0}`);
         if (!this.props.messages.data || this.props.messages.data.length <= 0) {
-            return (
+            if (!this.props.error) {
                 <Text style={{ textAlign:'center' }}>No Messages To Present</Text>
-            );
+            } else {
+                return (
+                    <Text style={{ textAlign:'center' }}>{this.props.error}</Text>
+                );
+            }
         } else {
             return (
                 <ListView
@@ -63,6 +70,7 @@ class MessageBoardComponent extends Component {
 }
 
 const mapStateToProps = ({ board }) => {
+    console.log(board);
     const { messages, feed, error } = board;
     const ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2
