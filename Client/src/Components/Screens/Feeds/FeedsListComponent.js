@@ -19,23 +19,15 @@ import FeedCell from './FeedCell';
 class FeedsListComponent extends Component {
 
     constructor() {
-        super();
-        const Background = '../../../../Design/trees_feed.png';
-        
+        super();        
         this.onRowSelection = this.onRowSelection.bind(this);
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-        const feeds = require('../../../../Data/FeedsList.json');
-        
-        this.state = {
-            feeds,
-            dataSource: ds.cloneWithRows(feeds),
-        };
+    }
+
+    componentWillMount() {
+        this.props.getFeedList(0);
     }
 
     renderFeed(feed) {
-        console.log(feed);
         return (
             <FeedCell 
                 item = {feed} 
@@ -44,7 +36,6 @@ class FeedsListComponent extends Component {
     }
 
     onRowSelection(item) {
-        console.log(item);
         try {
             Actions.messageBoard();
         } catch(error) {
@@ -53,7 +44,7 @@ class FeedsListComponent extends Component {
     }
 
     render() {
-        if (!this.state.feeds || this.state.feeds.length <= 0) {
+        if (!this.props.feeds || this.props.feeds.length <= 0 || !this.props.dataSource) {
             return (
                 <Text style={{flex:1}}>No Feeds</Text>
             );
@@ -63,7 +54,7 @@ class FeedsListComponent extends Component {
                 <ListView
                     style={{ flex: 1 }}
                     contentContainerStyle={{ margin: 12,}}
-                    dataSource={this.state.dataSource}
+                    dataSource={this.props.dataSource}
                     renderRow={ feed => this.renderFeed(feed) }
                 />
             </View>
@@ -71,7 +62,19 @@ class FeedsListComponent extends Component {
     }
 }
 
-export default connect(null, actions)(FeedsListComponent)
+const mapStateToProps = ({ feedsReducer }) => {
+    const { feeds, pageNumber, error, didLoad} = feedsReducer;
+
+    const ds = new ListView.DataSource({
+        rowHasChanged: (r1, r2) => r1 !== r2
+    });
+    return {
+        feeds,
+        dataSource: ds.cloneWithRows(feeds),
+    }
+}
+
+export default connect(mapStateToProps, actions)(FeedsListComponent)
 
 const styles = {
     container: {

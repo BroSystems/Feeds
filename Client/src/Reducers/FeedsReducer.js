@@ -10,13 +10,14 @@ const FEEDS_INITIAL_STATE = {
     error: null,
     didLoad: false,
     pageNumber: 0,
-    newFeed: null
 };
 
 export default (state = FEEDS_INITIAL_STATE, action) => {
     switch(action.type) {
         case GET_FEED_LIST:
-            return { ...state, feeds: action.payload, pageNumber: state.pageNumber + 1 };
+            return { ...state, 
+                    feeds: action.payload, 
+                    pageNumber: state.pageNumber + 1 };
         default: 
             return state
     }
