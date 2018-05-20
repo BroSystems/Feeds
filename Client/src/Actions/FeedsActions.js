@@ -11,9 +11,18 @@ export const deleteFeed = (name) => {
 };
 
 export const getFeedList = ({ pageNumber }) => {
-    const feeds = require('../../Data/FeedsList.json');
-    return {
-        type: GET_FEED_LIST,
-        payload: feeds
+    return dispatch => {
+        const feeds = require('../../Data/FeedsList.json');
+        dispatch({
+            type: GET_FEED_LIST,
+            payload: {
+                data: {
+                    feeds,
+                    pageNumber: pageNumber + 1,
+                    didLoad: true
+                },
+                error: null
+            }
+        });
     };
 };

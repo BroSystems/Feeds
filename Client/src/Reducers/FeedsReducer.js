@@ -15,9 +15,14 @@ const FEEDS_INITIAL_STATE = {
 export default (state = FEEDS_INITIAL_STATE, action) => {
     switch(action.type) {
         case GET_FEED_LIST:
+            const { error, data } = action.payload;
+            const { feeds, pageNumber, didLoad } = data;
             return { ...state, 
-                    feeds: action.payload, 
-                    pageNumber: state.pageNumber + 1 };
+                    feeds,
+                    error,
+                    pageNumber,
+                    didLoad,
+            };
         default: 
             return state
     }
