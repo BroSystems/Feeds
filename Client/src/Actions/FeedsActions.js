@@ -12,12 +12,11 @@ export const deleteFeed = (name) => {
 
 export const getFeedList = ({ pageNumber }) => {
     return dispatch => {
-        const feeds = require('../../Data/FeedsList.json');
         dispatch({
             type: GET_FEED_LIST,
             payload: {
                 data: {
-                    feeds,
+                    feeds: require('../../Data/FeedsList.json'),
                     pageNumber: pageNumber + 1,
                     didLoad: true
                 },

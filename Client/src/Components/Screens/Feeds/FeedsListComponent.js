@@ -21,6 +21,7 @@ class FeedsListComponent extends Component {
     constructor() {
         super();        
         this.onRowSelection = this.onRowSelection.bind(this);
+        this.renderContent = this.renderContent.bind(this);
     }
 
     componentWillMount() {
@@ -37,33 +38,41 @@ class FeedsListComponent extends Component {
 
     onRowSelection(item) {
         try {
-            Actions.messageBoard();
+            Actions.messageBoard(item);
         } catch(error) {
             console.log(error);
         }
     }
 
-    render() {
+    renderContent = () => {
         if (!this.props.feeds || this.props.feeds.length <= 0 || !this.props.dataSource) {
             return (
-                <Text style={{flex:1}}>No Feeds</Text>
+                <Text style={{ textAlign:'center' }}>No Feeds To Present</Text>
+            );
+        } else {
+            return (
+                <ListView
+                        style={{ flex: 1 }}
+                        contentContainerStyle={{ margin: 12,}}
+                        dataSource={this.props.dataSource}
+                        renderRow={ feed => this.renderFeed(feed) }
+                />
             );
         }
+    }
+
+    render() {
+        
         return (
             <View style = {styles.container}>
-                <ListView
-                    style={{ flex: 1 }}
-                    contentContainerStyle={{ margin: 12,}}
-                    dataSource={this.props.dataSource}
-                    renderRow={ feed => this.renderFeed(feed) }
-                />
+                {this.renderContent()}
             </View>
         );
     }
 }
 
 const mapStateToProps = ({ feedsReducer }) => {
-    const { feeds, pageNumber, error, didLoad} = feedsReducer;
+    const { feeds, pageNumber, error, didLoad } = feedsReducer;
 
     const ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2
@@ -79,6 +88,8 @@ export default connect(mapStateToProps, actions)(FeedsListComponent)
 const styles = {
     container: {
         flex:1,
+        justifyContent: 'center',
+        alignContent: 'center',
     },
     list: {
         flex:1,
