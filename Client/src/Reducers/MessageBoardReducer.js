@@ -8,27 +8,31 @@ const INITIAL_STATE = {
         data: [],
         page: 0,
         hasMore: true,
-        isLoading: false
+        isLoading: false,
+        messageStyle: {},
+        messageActions: {}
     },
-    feed:null,
+    feed_id:null,
     error: null
 };
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_MESSAGES:
-            if (!action.payload) {
-                return state;
-            }
             console.log(action.payload);
-            const { data, page, feed} = action.payload.data;
+
+            const { data, error } = action.payload;
+            const { messages, page, feedID, messageStyle, messageActions } = data;
+
             return {...state, 
                 messages: {
-                    data:[...data],
-                    page: page,
-                }, 
-                feed,
-                error: action.payload.error
+                    data: [...messages],
+                    page,
+                    messageStyle,
+                    messageActions
+                },
+                feedID,
+                error
             };
         case POST_MESSAGE:
             return { ...state,

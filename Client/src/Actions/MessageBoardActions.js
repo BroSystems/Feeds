@@ -7,20 +7,27 @@ import {
 
 const messages_json = require('../../Data/Messages.json');
 
-export const fetchMessages = ({page = 0,feed = null,userId = ''}) => {
+export const fetchMessages = ({page = 0,feed = {},userId = ''}) => {
 
     return dispatch => {
         const request = axios.get('https://api.mockaroo.com/api/acb6b990?count=10&key=ac886280');
 
+
+        const { message_style={}, message_actions={} } = feed.config;
+
+        console.log(feed);
+        
         request
             .then(json => {
                 dispatch({
                     type: FETCH_MESSAGES,
                     payload: {
                         data: {
-                            data: json.data,
+                            messages: json.data,
                             page: page + 1,
-                            feed: feed,
+                            feedID: feed.id,
+                            messageStyle: message_style,
+                            messageActions: message_actions
                         },
                     }
                 });
@@ -31,9 +38,11 @@ export const fetchMessages = ({page = 0,feed = null,userId = ''}) => {
                     type: FETCH_MESSAGES,
                     payload: {
                         data: {
-                            data: [],
+                            messages: [],
                             page: page + 1,
                             feed: feed,
+                            messageStyle:{},
+                            messageActions:{}
                         },
                         error: error
                     }
