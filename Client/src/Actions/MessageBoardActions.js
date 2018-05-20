@@ -5,7 +5,7 @@ import {
     POST_MESSAGE
 } from './Types';
 
-const messages_json = require('../../Data/MOCK_DATA.json');
+const messages_json = require('../../Data/Messages.json');
 
 export const fetchMessages = ({page = 0,feed = null,userId = ''}) => {
 

@@ -29,12 +29,12 @@ export default FeedCell = (props) => {
                 source={Background}
                 resizeMode="stretch">
                     <View style={styles.topTitles}>
-                        <Text style={styles.category}>FEED CATEGORY</Text>
+                        <Text style={styles.category}>{item.category}</Text>
                         <Text style={styles.title}>{item.name}</Text>
                     </View>
                     <View style={styles.bottomTitles}>
                         <Text style={styles.subtitle}>
-                            Inside the extraordinary world of Monument Valley 2
+                            {item.description}
                         </Text>
                     </View>
                     <View style={{ height: 8 }}/>

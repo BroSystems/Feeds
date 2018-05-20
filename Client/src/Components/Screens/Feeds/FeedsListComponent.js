@@ -24,15 +24,8 @@ class FeedsListComponent extends Component {
         
         this.onRowSelection = this.onRowSelection.bind(this);
 
-        const feeds = {
-            0: { name: 'feed 1', image: Background },
-            1: { name: 'feed 2', image: Background },
-            2: { name: 'feed 3', image: Background },
-            3: { name: 'feed 4', image: Background },
-            4: { name: 'feed 5', image: Background },
-            5: { name: 'feed 6', image: Background },
-            6: { name: 'feed 7', image: Background }
-        }
+        const feeds = require('../../../../Data/FeedsList.json');
+
         const ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
