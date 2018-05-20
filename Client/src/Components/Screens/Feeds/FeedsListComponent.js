@@ -23,13 +23,11 @@ class FeedsListComponent extends Component {
         const Background = '../../../../Design/trees_feed.png';
         
         this.onRowSelection = this.onRowSelection.bind(this);
-
-        const feeds = require('../../../../Data/FeedsList.json');
-
         const ds = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
-
+        const feeds = require('../../../../Data/FeedsList.json');
+        
         this.state = {
             feeds,
             dataSource: ds.cloneWithRows(feeds),
@@ -55,6 +53,11 @@ class FeedsListComponent extends Component {
     }
 
     render() {
+        if (!this.state.feeds || this.state.feeds.length <= 0) {
+            return (
+                <Text style={{flex:1}}>No Feeds</Text>
+            );
+        }
         return (
             <View style = {styles.container}>
                 <ListView
