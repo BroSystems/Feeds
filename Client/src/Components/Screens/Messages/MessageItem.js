@@ -11,6 +11,7 @@ import {
 
 import {
     MessageUserPart,
+    MessageActionsPart
 } from './Parts';
 
 // create a component
@@ -27,9 +28,7 @@ export default MessageItem = (props) => {
             <View style={styles.container}>
                 <Text>Empty</Text>
             </View>
-            <View style={styles.container}>
-                <Text>Bottom</Text>
-            </View>
+            <MessageActionsPart actions={ bottom }/>
         </Card>
     );
 };

@@ -1,1 +1,2 @@
-export MessageTopPart from './MessageTopPart';
+export MessageUserPart from './MessageUserPart';
+export MessageActionsPart from './MessageActionsPart';
