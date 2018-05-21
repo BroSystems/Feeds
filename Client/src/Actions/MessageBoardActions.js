@@ -27,14 +27,11 @@ const fetchingMessageSuccess = ({ page = 0, feed = {}, userId = '', messages = [
         type: FETCH_MESSAGES,
         payload: {
             data: {
-                messages:mergeMessageStyleAndActions({ 
+                messages: mergeMessageStyleAndActions({ 
                     messages, 
                     style: message_style, 
-                    actions: message_actions }), 
-                page, 
-                feedID: feed.id,
-                messageStyle: message_style,
-                messageActions: message_actions
+                    actions: message_actions
+                }), page, feed,
             },
         }
     };

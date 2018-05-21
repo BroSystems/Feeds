@@ -9,30 +9,28 @@ const INITIAL_STATE = {
         page: 0,
         hasMore: true,
         isLoading: false,
-        messageStyle: {},
-        messageActions: {}
     },
-    feed_id:null,
+    feed:null,
     error: null
 };
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_MESSAGES:
-            console.log(action.payload);
+            // console.log(action.payload);
 
             const { data, error } = action.payload;
-            const { messages, page, feedID, messageStyle, messageActions } = data;
-
+            const { messages, page, feed } = data;
+            console.log(data);
             return {...state, 
-                messages: {
-                    data: [...messages],
-                    page,
-                    messageStyle,
-                    messageActions
-                },
-                feedID,
-                error
+                    messages: {
+                        data: [...messages],
+                        page,
+                        hasMore: (messages.length > 0),
+                        isLoading: false
+                    },
+                    feed,
+                    error
             };
         case POST_MESSAGE:
             return { ...state,
@@ -40,7 +38,6 @@ export default (state = INITIAL_STATE, action) => {
                 error: action.payload.error
             };
         default:
-            console.log('Default');
             return state;
     }
 }
