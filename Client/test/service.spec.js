@@ -6,6 +6,9 @@ import {
   registerNewUser
 } from '../src/Actions/UserActions';
 
+import {
+  fetchMessages, mergeMessageStyleAndActions
+} from '../src/Actions/MessageBoardActions';
 
 describe("user actions tests", () => {
   it("should not authenticate unknown users", async () => {
@@ -71,6 +74,44 @@ describe("user actions tests", () => {
   afterEach(() => database.empty());
 });
 
+describe("messages actions tests", () => {
+
+  it("each message action should have 'Icon', 'Label', 'Value' and 'ActionType' fields", async () => {
+    const feed = require('../Data/FeedsList.json')[0];
+    const msgs = require('../Data/Messages.json');
+
+    const { message_actions } = feed.config;
+    const message = mergeMessageStyleAndActions({
+      messages: msgs, 
+      actions: message_actions})[0];
+    
+    let hasFields = true;
+
+    Object.keys(message.data.bottom).forEach(item => {
+      hasFields = hasFields && (!item.label) && (!item.value) && (!item.icon) && (!item.actionType);
+    });
+
+    expect(hasFields).toBe(true);
+  });
+
+  it("each one of board item message properties should contain: 'Value' and 'Style'", async () => {
+    const feed = require('../Data/FeedsList.json')[0];
+    const messages = require('../Data/Messages.json');
+    const { message_style } = feed.config;
+
+    const message = mergeMessageStyleAndActions({
+      messages,
+      style: message_style
+    })[0];
+    
+    let hasFields = true;
+
+    Object.keys(message.data.middle.message).forEach(item => {
+      hasFields = hasFields && (!item.value) && (!item.style);
+    });
+
+    expect(hasFields).toBe(true);
+  });
 });
 
 
