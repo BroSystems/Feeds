@@ -23,7 +23,7 @@ export default MessageItem = (props) => {
     const { top, middle, bottom } = props.message.data;
 
     return (
-        <Card>
+        <Card key={props.message.id}>
             <MessageUserPart part={ top }/>
             <View style={styles.container}>
                 <Text>Empty</Text>
