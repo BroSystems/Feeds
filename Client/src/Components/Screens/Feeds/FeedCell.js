@@ -28,16 +28,15 @@ export default FeedCell = (props) => {
                 style ={styles.image} 
                 source={{uri: item.image}}
                 resizeMode="stretch">
-                    <View style={styles.topTitles}>
-                        <Text style={styles.category}>{item.category}</Text>
-                        <Text style={styles.title}>{item.name}</Text>
-                    </View>
-                    <View style={styles.bottomTitles}>
-                        <Text style={styles.subtitle}>
-                            {item.description}
-                        </Text>
-                    </View>
-                    <View style={{ height: 8 }}/>
+                <View style={styles.topTitles}>
+                    <Text style={styles.category}>{item.category}</Text>
+                    <Text style={styles.title}>{item.name}</Text>
+                </View>
+                <View style={styles.bottomTitles}>
+                    <Text style={styles.subtitle}>
+                       {item.description}
+                    </Text>
+                </View>
             </ImageBackground>
         </TouchableWithoutFeedback>
     );
@@ -47,28 +46,26 @@ const styles = {
     header: {
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'relative',
+        width: '100%'
     },
     item: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flex: 1,
         shadowOffset: {
             width: 0,
             height: 12
         },
-        shadowOpacity: 0.16,
+        shadowOpacity: 0.17,
         shadowColor: '#000000',
         shadowRadius: 12,
-        marginBottom: 8,
     },
     image: {
         aspectRatio: 1,
-        position: 'relative',
         borderRadius: 12,
         borderWidth: 1,
         borderColor: 'transparent',
         overflow: 'hidden',
+        width: '100%',
+        marginBottom: 8
     },
     topTitles: {
         top: 0,

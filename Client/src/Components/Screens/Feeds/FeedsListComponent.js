@@ -52,7 +52,7 @@ class FeedsListComponent extends Component {
         } else {
             return (
                 <ListView
-                        style={{ flex: 1 }}
+                        style={styles.list}
                         contentContainerStyle={{ margin: 12,}}
                         dataSource={this.props.dataSource}
                         renderRow={ feed => this.renderFeed(feed) }
@@ -88,8 +88,6 @@ export default connect(mapStateToProps, actions)(FeedsListComponent)
 const styles = {
     container: {
         flex:1,
-        justifyContent: 'center',
-        alignContent: 'center',
     },
     list: {
         flex:1,
