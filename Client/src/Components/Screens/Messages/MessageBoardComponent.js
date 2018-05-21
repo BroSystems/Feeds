@@ -19,7 +19,7 @@ class MessageBoardComponent extends Component {
         this.renderList = this.renderList.bind(this);
     }
 
-    componentDidMount() {        
+    componentDidMount() {
         const feed = this.props.navigation.state.params;
         
         const { messages, error } = this.props;
@@ -61,6 +61,10 @@ class MessageBoardComponent extends Component {
     render() {
         return (
             <View style={ styles.container }>
+                <FeedCell
+                    isHeader
+                    item={this.props.feed}
+                />
                 {this.renderList()}
             </View>
         );
@@ -68,7 +72,6 @@ class MessageBoardComponent extends Component {
 }
 
 const mapStateToProps = ({ board }) => {
-    console.log(board);
     const { messages, feed, error } = board;
     const ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2

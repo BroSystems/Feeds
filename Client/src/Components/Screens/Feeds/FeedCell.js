@@ -11,18 +11,17 @@ import {
 } from 'react-native';
 
 export default FeedCell = (props) => {
-    const { item, onPress, style, isHeader = false} = props;
+    const { item, onPress = () => {}, style = {}, isHeader = false} = props;
 
     if (!item) {
         return (
-            <View>
-                <Text>Item is Undefined</Text>
-            </View>
+            <View/>
         )
     }
     return (
+        <View style={[style, isHeader ? styles.header : styles.item]}>
         <TouchableWithoutFeedback
-            style = {[style, isHeader ? styles.header : styles.item]}
+            style = {{flex:1}}
             onPress={event => onPress(item)}>
             <ImageBackground 
                 style ={styles.image} 
@@ -39,6 +38,7 @@ export default FeedCell = (props) => {
                 </View>
             </ImageBackground>
         </TouchableWithoutFeedback>
+        </View>
     );
 };
 
@@ -46,7 +46,8 @@ const styles = {
     header: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
+        aspectRatio: 2
     },
     item: {
         flex: 1,
@@ -54,18 +55,19 @@ const styles = {
             width: 0,
             height: 12
         },
-        shadowOpacity: 0.17,
+        shadowOpacity: 0.24,
         shadowColor: '#000000',
-        shadowRadius: 12,
+        shadowRadius: 8,
+        aspectRatio: 1,
+        marginBottom: 12
     },
     image: {
-        aspectRatio: 1,
+        flex:1,
         borderRadius: 12,
         borderWidth: 1,
         borderColor: 'transparent',
         overflow: 'hidden',
         width: '100%',
-        marginBottom: 8
     },
     topTitles: {
         top: 0,
