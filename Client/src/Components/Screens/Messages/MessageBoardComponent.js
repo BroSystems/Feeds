@@ -19,9 +19,7 @@ class MessageBoardComponent extends Component {
         this.renderList = this.renderList.bind(this);
     }
 
-    componentDidMount() {
-        console.log(this.props);
-        
+    componentDidMount() {        
         const feed = this.props.navigation.state.params;
         
         const { messages, error } = this.props;
