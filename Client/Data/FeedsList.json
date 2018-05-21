@@ -1,10 +1,271 @@
-[{"id":"44d60b5f-3841-4582-a58f-8bd612c0d074","category":"Board Category","name":"Stim","image":"http://dummyimage.com/500x500.png/5fa2dd/ffffff","description":"Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"4a727090-94ec-4819-b92a-8ab51d0c992a","category":"Board Category","name":"Bigtax","image":"http://dummyimage.com/500x500.jpg/cc0000/ffffff","description":"Proin eu mi. Nulla ac enim.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"7c9df771-4c8f-469c-847c-c92aebca23a4","category":"Board Category","name":"Daltfresh","image":"http://dummyimage.com/500x500.bmp/5fa2dd/ffffff","description":"In sagittis dui vel nisl.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"950dea33-7d51-446f-8b25-e78cce449f21","category":"Board Category","name":"Cardify","image":"http://dummyimage.com/500x500.png/cc0000/ffffff","description":"Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"a378b424-20bb-4f8f-8ae7-ad5e4b4e9857","category":"Board Category","name":"Fintone","image":"http://dummyimage.com/500x500.jpg/5fa2dd/ffffff","description":"Donec semper sapien a libero. Nam dui.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"a0307457-b9dd-43e2-b2c7-cb137deaf992","category":"Board Category","name":"Transcof","image":"http://dummyimage.com/500x500.png/dddddd/000000","description":"Nunc purus. Phasellus in felis.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"11f4aeb6-7b2c-4ea5-946b-a40342d60f29","category":"Board Category","name":"Temp","image":"http://dummyimage.com/500x500.png/5fa2dd/ffffff","description":"Suspendisse potenti. Cras in purus eu magna vulputate luctus.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"a0dd5c82-2cd9-41ae-bde0-977ec0fc80ff","category":"Board Category","name":"Zamit","image":"http://dummyimage.com/500x500.bmp/cc0000/ffffff","description":"Duis at velit eu est congue elementum. In hac habitasse platea dictumst.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"eb8d90f4-f586-4c67-807b-a9f2a7461f4b","category":"Board Category","name":"Aerified","image":"http://dummyimage.com/500x500.jpg/ff4444/ffffff","description":"Integer a nibh.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}},
-{"id":"fb064c69-b214-4dc2-9bc9-b7eb8e5cddf9","category":"Board Category","name":"Temp","image":"http://dummyimage.com/500x500.bmp/dddddd/000000","description":"Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.","config":{"message_style":{"from":"collection-pos-1","to":"collection-pos-2","depart_time":"collection-pos-3","sits":"collection-pos-4","car_type":"collection-pos-5","description":"description"},"message_actions":{"like":{"action":"LIKE_MESSAGE_OWNER","icon":"btnLike"},"add_self":{"action":"JOIN_MESSAGE_GROUP","icon":"btnJoin"}}}}]
+[{
+        "id": "44d60b5f-3841-4582-a58f-8bd612c0d074",
+        "category": "Board Category",
+        "name": "Stim",
+        "image": "http://dummyimage.com/500x500.png/5fa2dd/ffffff",
+        "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "4a727090-94ec-4819-b92a-8ab51d0c992a",
+        "category": "Board Category",
+        "name": "Bigtax",
+        "image": "http://dummyimage.com/500x500.jpg/cc0000/ffffff",
+        "description": "Proin eu mi. Nulla ac enim.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "7c9df771-4c8f-469c-847c-c92aebca23a4",
+        "category": "Board Category",
+        "name": "Daltfresh",
+        "image": "http://dummyimage.com/500x500.bmp/5fa2dd/ffffff",
+        "description": "In sagittis dui vel nisl.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "950dea33-7d51-446f-8b25-e78cce449f21",
+        "category": "Board Category",
+        "name": "Cardify",
+        "image": "http://dummyimage.com/500x500.png/cc0000/ffffff",
+        "description": "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "a378b424-20bb-4f8f-8ae7-ad5e4b4e9857",
+        "category": "Board Category",
+        "name": "Fintone",
+        "image": "http://dummyimage.com/500x500.jpg/5fa2dd/ffffff",
+        "description": "Donec semper sapien a libero. Nam dui.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "a0307457-b9dd-43e2-b2c7-cb137deaf992",
+        "category": "Board Category",
+        "name": "Transcof",
+        "image": "http://dummyimage.com/500x500.png/dddddd/000000",
+        "description": "Nunc purus. Phasellus in felis.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "11f4aeb6-7b2c-4ea5-946b-a40342d60f29",
+        "category": "Board Category",
+        "name": "Temp",
+        "image": "http://dummyimage.com/500x500.png/5fa2dd/ffffff",
+        "description": "Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "a0dd5c82-2cd9-41ae-bde0-977ec0fc80ff",
+        "category": "Board Category",
+        "name": "Zamit",
+        "image": "http://dummyimage.com/500x500.bmp/cc0000/ffffff",
+        "description": "Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "eb8d90f4-f586-4c67-807b-a9f2a7461f4b",
+        "category": "Board Category",
+        "name": "Aerified",
+        "image": "http://dummyimage.com/500x500.jpg/ff4444/ffffff",
+        "description": "Integer a nibh.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    },
+    {
+        "id": "fb064c69-b214-4dc2-9bc9-b7eb8e5cddf9",
+        "category": "Board Category",
+        "name": "Temp",
+        "image": "http://dummyimage.com/500x500.bmp/dddddd/000000",
+        "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+        "config": {
+            "message_style": {
+                "from": "collection-pos-1",
+                "to": "collection-pos-2",
+                "depart_time": "collection-pos-3",
+                "sits": "collection-pos-4",
+                "car_type": "collection-pos-5",
+                "description": "description"
+            },
+            "message_actions": {
+                "like": {
+                    "action": "LIKE_MESSAGE_OWNER",
+                    "icon": "btnLike"
+                },
+                "add_self": {
+                    "action": "JOIN_MESSAGE_GROUP",
+                    "icon": "btnJoin"
+                }
+            }
+        }
+    }
+]
