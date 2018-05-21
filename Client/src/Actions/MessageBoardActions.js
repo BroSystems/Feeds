@@ -6,13 +6,18 @@ import {
     POST_MESSAGE
 } from './Types';
 
-const messages_json = require('../../Data/Messages.json');
-
 export const fetchMessages = ({page = 0, feed = {}, userId = ''}) => {
     return dispatch => {
-        axios.get('https://api.mockaroo.com/api/acb6b990?count=10&key=ac886280')
-            .then(json => dispatch(fetchingMessageSuccess({ page: page+1, feed, userId, messages: json.data })))
-            .catch(error => dispatch(fetchingMessagesFailed({ error })));
+        dispatch(fetchingMessageSuccess({
+                    page: page + 1,
+                    feed,
+                    userId,
+                    messages: require('../../Data/Messages.json')
+                }));
+                
+        // axios.get('https://api.mockaroo.com/api/acb6b990?count=10&key=ac886280')
+        //     .then(json => dispatch(fetchingMessageSuccess({ page: page+1, feed, userId, messages: json.data })))
+        //     .catch(error => dispatch(fetchingMessagesFailed({ error })));
     };
 };
 
