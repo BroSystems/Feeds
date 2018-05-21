@@ -8,7 +8,7 @@ import {
     StyleSheet 
 } from 'react-native';
 
-import Icons from '../../../../../Assets/images';
+import Icons from '../../../../../Assets/Images';
 
 // create a component
 const MessageActionPart = (props) => {
@@ -17,15 +17,19 @@ const MessageActionPart = (props) => {
     let actionViews = _.map(Object.values(actions), action => {
         const value = action.value;
         const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
-        if (!Icons[iconName]) {
+        const icon = Icons.Actions(iconName);
+
+        if (!icon) {
             console.log(`${iconName} Icon Doesnt Exist`);
         }
         return (
-            <TouchableHighlight style={styles.actionContainer}>
-                <View style={styles.actionContent}>
+            <TouchableHighlight 
+                key={ action.label } 
+                style={ styles.actionContainer }>
+                <View style={ styles.actionContent }>
                     <Image 
-                        style={styles.icon}
-                        source={Icons[iconName]}
+                        style={ styles.icon }
+                        source={ icon }
                         resizeMode = 'contain'
                         />
                 </View>
