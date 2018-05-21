@@ -26,7 +26,7 @@ export default FeedCell = (props) => {
             onPress={event => onPress(item)}>
             <ImageBackground 
                 style ={styles.image} 
-                source={Background}
+                source={{uri: item.image}}
                 resizeMode="stretch">
                     <View style={styles.topTitles}>
                         <Text style={styles.category}>{item.category}</Text>
