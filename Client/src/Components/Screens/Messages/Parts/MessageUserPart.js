@@ -10,9 +10,9 @@ import {
 } from 'react-native-elements';
 
 // create a component
-const MessageTopPart = (props) => {
+const MessageUserPart = (props) => {
     const user = props.part.user;
-    console.log(user);
+    // console.log(user);
     
     return (
         <View style={ styles.container }>
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default MessageTopPart;
+export default MessageUserPart;

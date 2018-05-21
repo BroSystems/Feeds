@@ -10,7 +10,7 @@ import {
 } from 'react-native-elements';
 
 import {
-    MessageTopPart
+    MessageUserPart,
 } from './Parts';
 
 // create a component
@@ -23,7 +23,7 @@ export default MessageItem = (props) => {
 
     return (
         <Card>
-            <MessageTopPart part={ top }/>
+            <MessageUserPart part={ top }/>
             <View style={styles.container}>
                 <Text>Empty</Text>
             </View>
