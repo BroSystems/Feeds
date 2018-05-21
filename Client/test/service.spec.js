@@ -6,74 +6,77 @@ import {
   registerNewUser
 } from '../src/Actions/UserActions';
 
-describe("must have features", () => {
+
+describe("user actions tests", () => {
   it("should not authenticate unknown users", async () => {
-    const email = Chance().email();
+    const username = Chance().email();
     const password = validPassword();
-    const response = authenticateUser(email, password);
+    const response = authenticateUser({ username, password });
     expect(response.payload).toBe(false);
   });
 
   it("should authenticate users that registered before if they have correct password", async () => {
-    const email = Chance().email();
+    const username = Chance().email();
     const password = validPassword();
-    registerNewUser(email, password);
-    const response = authenticateUser(email, password);
+
+    registerNewUser({ username, password });
+    const response = authenticateUser({ username, password });
     expect(response.payload).toBe(true);
   });
 
   it("should not authenticate users that registered before if they have incorrect password", async () => {
-    const email = Chance().email();
+    const username = Chance().email();
     const password = validPassword();
     const notThePassword = validPassword();
 
-    registerNewUser(email, password);
-    const response = authenticateUser(email, password);
+    registerNewUser({ username, password });
+    const response = authenticateUser({ username, password: notThePassword });
 
     expect(response.payload).toBe(false);
   });
-});
 
-describe("bonus features", () => {
-  it("should not let another user register with same email", async () => {
-    const email = Chance().email();
+  it("should not let another user register with same username", async () => {
+    const username = Chance().email();
     const password = validPassword();
     const password2 = validPassword();
 
-    registerNewUser(email, password);
-    registerNewUser({ email, password2 });
-    const isUser1Authenticated = authenticateUser(email, password);
-    const isUser2Authenticated = authenticateUser({ email, password2 });
+    registerNewUser({ username, password });
+    registerNewUser({ username, password: password2 });
+    const isUser1Authenticated = authenticateUser({ username, password });
+    const isUser2Authenticated = authenticateUser({ username, password: password2 });
 
     expect(isUser1Authenticated.payload).toBe(true);
-    expect(isUser2Authenticated.payload).toBe(false);
+    expect(isUser2Authenticated.payload).toBe(password == password2);
   });
 
-  it("should not let user register if they use invalid email", async () => {
-    const email = Chance().string();
+  it("should not let user register if they use invalid username", async () => {
+    const username = Chance().string();
     const password = validPassword();
 
-    registerNewUser(email, password);
-    const response = authenticateUser(email, password);
-
+    registerNewUser({ username, password });
+    const response = authenticateUser({ username, password });
     expect(response.payload).toBe(false);
   });
 
   it("should not let user register if password is not 4-20 characters", async () => {
-    const email = Chance().email();
+    const username = Chance().email();
     const password = invalidPassword();
 
-    registerNewUser(email, password);
-    const response = authenticateUser(email, password);
+    registerNewUser({ username, password });
+    const response = authenticateUser({ username, password });
 
     expect(response.payload).toBe(false);
   });
+
+  afterEach(() => database.empty());
 });
 
-afterEach(() => database.empty());
+});
+
 
 const validPassword = () =>
   Chance().string({ length: Chance().integer({ min: 4, max: 20 }) });
+
 const invalidPassword = () =>
   Chance().string({
     length: Chance().pickone([

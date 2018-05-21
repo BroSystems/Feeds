@@ -19,7 +19,7 @@ class LoginComponent extends Component {
   constructor() {
     super();
   }
-
+  
   onUsernameChange(text) {
     this.props.usernameChanged(text);
   }
@@ -35,7 +35,7 @@ class LoginComponent extends Component {
 
   onRegisterPressed() {
     const { username, password } = this.props;
-    this.props.registerNewUser(username,password);
+    this.props.registerNewUser(this.props);
   }
 
   renderBottomPart() {
@@ -49,6 +49,9 @@ class LoginComponent extends Component {
   }
 
   render() {
+    if (this.props.isLogged) {
+      Actions.feedsList();
+    }
     return (
       <View style={styles.container}>
         <RkCard>

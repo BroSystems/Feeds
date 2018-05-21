@@ -22,17 +22,16 @@ export const passwordChanged = password => {
     };
 };
 
-export const registerNewUser = (username, password) => {
+export const registerNewUser = ({ username = '', password = '' }) => {
     // request to register to database
     if (isValidEmail(username) && isValidPassword(password) && !isUserExist(username)) {
+        username = String(username).toLowerCase();
         database.insert({ username, password });
-        console.log(`Registered ${username} with ${password}`);
         return {
             type: REGISTER_USER,
             payload: true
         };
     }
-    console.log(`Failed to Register ${username} with ${password}`);
     return {
         type: REGISTER_USER,
         payload: false
@@ -41,13 +40,12 @@ export const registerNewUser = (username, password) => {
     
 };
 
-export const authenticateUser = (username = '', password = '') => {
+export const authenticateUser = ({ username = '', password = '' }) => {
     // request to login to database
-    // console.log(`Requested To Login - ${username,password} to the system`);
-    const row = database.selectOne(row => row.username == username);
+
+    const row = database.selectOne(row => row.username == String(username).toLowerCase());
 
     if (row != null && row.password == password) {
-        Actions.feedsList();
         return {
             type: LOGIN_USER,
             payload: true
