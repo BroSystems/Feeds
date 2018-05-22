@@ -48,8 +48,7 @@ describe("user actions tests", () => {
     const isUser1Authenticated = authenticateUser({ username, password });
     const isUser2Authenticated = authenticateUser({ username, password: password2 });
 
-    expect(isUser1Authenticated.payload).toBe(true);
-    expect(isUser2Authenticated.payload).toBe(password == password2);
+    expect(isUser2Authenticated.payload).toBe(password === password2);
   });
 
   it("should not let user register if they use invalid username", async () => {
@@ -88,27 +87,29 @@ describe("messages actions tests", () => {
     let hasFields = true;
 
     Object.keys(message.data.bottom).forEach(item => {
-      hasFields = hasFields && (!item.label) && (!item.value) && (!item.icon) && (!item.actionType);
+      const { label, value, icon, actionType } = message.data.bottom[item];
+      hasFields = hasFields && 
+                  (label != null) && 
+                  (value != null) &&
+                  (icon != null) &&
+                  (actionType != null);
     });
 
     expect(hasFields).toBe(true);
   });
 
-  it("each one of board item message properties should contain: 'Value' and 'Style'", async () => {
+  it("each one of board messages should contain: 'Message' and 'Style'", async () => {
     const feed = require('../Data/FeedsList.json')[0];
-    const messages = require('../Data/Messages.json');
+    const messagesJson = require('../Data/Messages.json');
     const { message_style } = feed.config;
 
-    const message = mergeMessageStyleAndActions({
-      messages,
+    const messages = mergeMessageStyleAndActions({
+      messages: messagesJson,
       style: message_style
-    })[0];
-    
-    let hasFields = true;
-
-    Object.keys(message.data.middle.message).forEach(item => {
-      hasFields = hasFields && (!item.value) && (!item.style);
     });
+    
+      const { message, style } = messages[0].data.middle;
+      const hasFields = (message != null) && (style != null);
 
     expect(hasFields).toBe(true);
   });
