@@ -8,12 +8,18 @@ import {
 
 export const fetchMessages = ({page = 0, feed = {}, userId = ''}) => {
     return dispatch => {
-        dispatch(fetchingMessageSuccess({
-                    page: page + 1,
-                    feed,
-                    userId,
-                    messages: require('../../Data/Messages.json')
-                }));
+        if (!feed) {
+            dispatch(fetchingMessagesFailed({
+                error:'No Feed Object Was Passed'
+            }));
+        } else {
+            dispatch(fetchingMessageSuccess({
+                        page: page + 1,
+                        feed,
+                        userId,
+                        messages: require('../../Data/Messages.json')
+                    }));
+        }
                 
         // axios.get('https://api.mockaroo.com/api/acb6b990?count=10&key=ac886280')
         //     .then(json => dispatch(fetchingMessageSuccess({ page: page+1, feed, userId, messages: json.data })))
@@ -47,23 +53,20 @@ const fetchingMessagesFailed = ({ error }) => {
     });
 };
 
-export const mergeMessageStyleAndActions = ({ messages = [], style = null, actions = null }) => {
+export const mergeMessageStyleAndActions = ({ messages = [], style = {}, actions = {} }) => {
     _.forEach(messages, msg => {
         // merges body part
-        if (style) {
-            _.forEach(Object.keys(msg.data.middle.message), key => {
-                const value = msg.data.middle.message[key];
-                msg.data.middle.message[key] = { value, style };
-            });
-        }
+        _.forEach(Object.keys(msg.data.middle.message), key => {
+            const value = msg.data.middle.message[key];
+            const keyStyle = style[key];
+            msg.data.middle.message[key] = { value, style: keyStyle };
+        });
         // merges bottom part
-        if (actions) {
-            _.forEach(Object.keys(msg.data.bottom), key => {
-                const { action, icon } = actions[key];
-                msg.data.bottom[key].actionType = action;
-                msg.data.bottom[key].icon = icon;
-            });
-        }
+        _.forEach(Object.keys(msg.data.bottom), key => {
+            const { action, icon } = actions[key];
+            msg.data.bottom[key].actionType = action;
+            msg.data.bottom[key].icon = icon;
+        });
     });
     
     return messages;

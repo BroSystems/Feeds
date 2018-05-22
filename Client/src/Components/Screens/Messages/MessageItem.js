@@ -13,6 +13,7 @@ import {
     MessageUserPart,
     MessageActionsPart
 } from './Parts';
+import MessageDataPart from './Parts/MessageDataPart';
 
 // create a component
 export default MessageItem = (props) => {
@@ -25,9 +26,7 @@ export default MessageItem = (props) => {
     return (
         <Card key={props.message.id}>
             <MessageUserPart part={ top }/>
-            <View style={styles.container}>
-                <Text>Empty</Text>
-            </View>
+            <MessageDataPart data={ middle }/>
             <MessageActionsPart actions={ bottom }/>
         </Card>
     );

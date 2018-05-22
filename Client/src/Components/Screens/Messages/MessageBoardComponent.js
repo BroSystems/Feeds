@@ -20,7 +20,7 @@ class MessageBoardComponent extends Component {
     }
 
     componentDidMount() {
-        const feed = this.props.navigation.state.params;
+        const feed = this.props.navigation.getParam('feed',{});
         
         const { messages, error } = this.props;
         const params = {

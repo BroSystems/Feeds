@@ -23,11 +23,11 @@ const MessageActionPart = (props) => {
             console.log(`${iconName} Icon Doesnt Exist`);
         }
         return (
-            <TouchableHighlight 
+            <TouchableHighlight
                 key={ action.label } 
                 style={ styles.actionContainer }>
                 <View style={ styles.actionContent }>
-                    <Image 
+                    <Image
                         style={ styles.icon }
                         source={ icon }
                         resizeMode = 'contain'

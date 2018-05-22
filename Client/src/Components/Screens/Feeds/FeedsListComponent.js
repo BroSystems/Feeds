@@ -38,7 +38,7 @@ class FeedsListComponent extends Component {
 
     onRowSelection(item) {
         try {
-            Actions.messageBoard(item);
+            this.props.navigation.navigate('MessageBoard', { feed: item });
         } catch(error) {
             console.log(error);
         }
