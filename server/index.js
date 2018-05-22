@@ -1,16 +1,45 @@
-const express = require('express');
+const express = require("express");
+const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+const bodyParser = require("body-parser");
+const keys = require("./config/keys");
+
+require("./models/User");
+require("./models/Blog");
+require("./services/passport");
+
+const cookieMaxAge = 30 * 24 * 60 * 60 * 1000;
+mongoose.Promise = global.Promise;
+mongoose.connect(keys.mongoURI, { useMongoClient: true });
+
 const app = express();
-const db = require("./db/db-connector");
 
+app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    maxAge: cookieMaxAge,
+    keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.use(express.static('public'));
-app.use("/users", require('./routes/users'));
-app.use("/groups", require('./routes/groups'));
+require("./routes/authRoutes")(app);
+//require("./routes/groupsRoutes")(app);
+//require("./routes/usersRoutes")(app);
+//require("./routes/messageRoutes")(app);
 
-const server = app.listen(8000, () => {
-    let host = server.address().address
-    let port = server.address().port
+if (["production"].includes(process.env.NODE_ENV)) {
+  app.use(express.static("client/build"));
 
-    console.log("app listening at http://%s:%s", host, port)
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve("client", "build", "index.html"));
+  });
+}
 
-})
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Listening on port`, PORT);
+});
