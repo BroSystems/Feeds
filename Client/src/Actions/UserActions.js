@@ -43,9 +43,9 @@ export const registerNewUser = ({ username = '', password = '' }) => {
 export const authenticateUser = ({ username = '', password = '' }) => {
     // request to login to database
 
-    const row = database.selectOne(row => row.username == String(username).toLowerCase());
+    const row = database.selectOne(row => row.username === String(username).toLowerCase());
 
-    if (row != null && row.password == password) {
+    if (row != null && row.password === password) {
         return {
             type: LOGIN_USER,
             payload: true
@@ -74,5 +74,5 @@ const isValidPassword = password => {
 };
 
 const isUserExist = username => {
-    return database.selectOne(row => row.username == username) != null;
+    return database.selectOne(row => row.username === username) != null;
 }
