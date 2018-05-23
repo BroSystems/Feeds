@@ -55,19 +55,30 @@ const fetchingMessagesFailed = ({ error }) => {
 
 export const mergeMessageStyleAndActions = ({ messages = [], style = {}, actions = {} }) => {
     _.forEach(messages, msg => {
-        // merges body part
-        _.forEach(Object.keys(msg.data.middle.message), key => {
-            const value = msg.data.middle.message[key];
-            const keyStyle = style[key];
-            msg.data.middle.message[key] = { value, style: keyStyle };
+        // merges data part
+        // console.log(JSON.stringify(Object.keys(msg.data),null,2));
+        _.forEach(Object.keys(msg.data), item => {
+            // getting style for item from Feed Message Style Config 
+            const styleValue = style[item];
+            if (!styleValue) {
+                console.log(`Item ${item} has no style defined`);
+                return;
+            }
+            msg.data[item].style = styleValue;
         });
-        // merges bottom part
-        _.forEach(Object.keys(msg.data.bottom), key => {
-            const { action, icon } = actions[key];
-            msg.data.bottom[key].actionType = action;
-            msg.data.bottom[key].icon = icon;
+        // merges actions part
+        // console.log(JSON.stringify(Object.keys(msg.actions),null,2));
+        _.forEach(Object.keys(msg.actions), item => {
+            const action = actions[item];
+            if (!action) {
+                console.log(`Item \'${item}\' has no actions defined`);
+                return;
+            }
+            const { actionType, icon } = actions[item];
+            msg.actions[item].icon = icon;
+            msg.actions[item].actionType = actionType;
+            console.log(JSON.stringify(msg.actions[item],null,2));
         });
     });
-    
     return messages;
 };
