@@ -19,7 +19,7 @@ class MessageBoardComponent extends Component {
         this.renderList = this.renderList.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const feed = this.props.navigation.getParam('feed',{});
         
         const { messages, error } = this.props;
@@ -45,7 +45,7 @@ class MessageBoardComponent extends Component {
                 <ListView
                     dataSource={ this.props.dataSource }
                     renderRow={ this.renderMessage }
-                />    
+                />
             );
         }
     }
@@ -53,6 +53,7 @@ class MessageBoardComponent extends Component {
     renderMessage(message) {
         return ( 
             <MessageItem 
+                style = { this.props.feed}
                 message={ message }
             /> 
         );
