@@ -8,10 +8,10 @@ const keys = require("./config/keys");
 require("./models/User");
 require("./models/Blog");
 require("./services/passport");
-
+const mongoUri = `mongodb://localhost:27017/app`;
 const cookieMaxAge = 30 * 24 * 60 * 60 * 1000;
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI, { useMongoClient: true });
+mongoose.connect(mongoUri, { useMongoClient: true });
 
 const app = express();
 
