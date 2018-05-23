@@ -20,7 +20,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -46,7 +46,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -72,7 +72,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -98,7 +98,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -124,7 +124,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -150,7 +150,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -176,7 +176,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -202,7 +202,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -228,7 +228,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
@@ -254,7 +254,7 @@
             },
             "add_self": {
                 "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "icJoin"
+                "icon": "btnJoin"
             }
         }
     }
