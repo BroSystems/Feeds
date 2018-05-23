@@ -18,16 +18,16 @@ import MessageDataPart from './Parts/MessageDataPart';
 // create a component
 export default MessageItem = (props) => {
     if (!props) {
-        return <View/>
+        return <View/>;
     }
 
-    const { top, middle, bottom } = props.message.data;
+    const { sender, data, actions } = props.message;
 
     return (
         <Card key={props.message.id}>
-            <MessageUserPart part={ top }/>
-            <MessageDataPart data={ middle }/>
-            <MessageActionsPart actions={ bottom }/>
+            <MessageUserPart user={ sender }/>
+            <MessageDataPart data={ data }/>
+            <MessageActionsPart actions={ actions }/>
         </Card>
     );
 };

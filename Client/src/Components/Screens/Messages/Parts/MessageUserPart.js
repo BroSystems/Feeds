@@ -11,9 +11,8 @@ import {
 
 // create a component
 const MessageUserPart = (props) => {
-    const user = props.part.user;
+    const { user } = props;
     // console.log(user);
-    
     return (
         <View style={ styles.container }>
             <Avatar

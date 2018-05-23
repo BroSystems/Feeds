@@ -77,7 +77,6 @@ export const mergeMessageStyleAndActions = ({ messages = [], style = {}, actions
             const { actionType, icon } = actions[item];
             msg.actions[item].icon = icon;
             msg.actions[item].actionType = actionType;
-            console.log(JSON.stringify(msg.actions[item],null,2));
         });
     });
     return messages;

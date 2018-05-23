@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
 const MessageDataPart = (props) => {
-    const { message } = props.data;
+    const { data } = props;
 
     return (
         <View style={styles.container}>

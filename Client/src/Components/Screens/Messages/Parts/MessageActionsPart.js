@@ -12,7 +12,7 @@ import Icons from '../../../../../Assets/Images';
 
 // create a component
 const MessageActionPart = (props) => {
-    const actions = props.actions;
+    const { actions } = props;
     
     let actionViews = _.map(Object.values(actions), action => {
         const value = action.value;
