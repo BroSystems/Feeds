@@ -21,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
 
             const { data, error } = action.payload;
             const { messages, page, feed } = data;
-            console.log(data);
+            // console.log(data);
             return {...state, 
                     messages: {
                         data: [...messages],
