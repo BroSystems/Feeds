@@ -4,13 +4,6 @@ import {
   View,
   Text
 } from 'react-native';
-import {
-  RkButton,
-  RkTextInput,
-  RkCard,
-  RkComponent,
-  RkText
-} from 'react-native-ui-kitten';
 
 import * as actions from '../../../Actions/UserActions';
 

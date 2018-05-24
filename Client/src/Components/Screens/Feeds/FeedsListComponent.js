@@ -8,9 +8,6 @@ import {
     ImageBackground
 } from 'react-native';
 
-import {
-
-} from 'react-native-ui-kitten';
 
 import { Actions } from 'react-native-router-flux';
 
