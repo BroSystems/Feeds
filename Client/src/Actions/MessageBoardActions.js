@@ -53,10 +53,10 @@ const fetchingMessagesFailed = ({ error }) => {
 };
 
 export const mergeMessageStyleAndActions = ({ messages = [], style = {}, actions = {} }) => {
-    _.forEach(messages, msg => {
+    messages.forEach(msg => {
         // merges data part
         // console.log(JSON.stringify(Object.keys(msg.data),null,2));
-        _.forEach(Object.keys(msg.data), item => {
+        Object.keys(msg.data).forEach(item => {
             // getting style for item from Feed Message Style Config 
             const styleValue = style[item];
             if (!styleValue) {
@@ -67,7 +67,7 @@ export const mergeMessageStyleAndActions = ({ messages = [], style = {}, actions
         });
         // merges actions part
         // console.log(JSON.stringify(Object.keys(msg.actions),null,2));
-        _.forEach(Object.keys(msg.actions), item => {
+        Object.keys(msg.actions).forEach(item => {
             const action = actions[item];
             if (!action) {
                 console.log(`Item \'${item}\' has no actions defined`);

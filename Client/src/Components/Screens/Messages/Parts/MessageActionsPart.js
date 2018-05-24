@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { 
     View, 
     Text,
@@ -13,8 +12,7 @@ import Icons from '../../../../../Assets/Images';
 // create a component
 const MessageActionPart = (props) => {
     const { actions } = props;
-    
-    let actionViews = _.map(Object.values(actions), action => {
+    let actionViews = Object.values(actions).forEach(action => {
         const value = action.value;
         const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
         const icon = Icons.Actions[iconName]();
