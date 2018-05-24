@@ -1,12 +1,8 @@
-export default (type) => {
-    switch (type) {
-        case 'btnLike':
-            return require('./btn_like.png');
-        case 'btnLikeSelected':
-            return require('./btn_like_selected.png');
-        case 'btnJoin':
-            return require('./btn_join_group.png');
-        case 'btnJoinSelected':
-            return require('./btn_join_group_selected.png');
-    }
+import * as Paths from '../../assets';
+
+export default {
+        btnLike:            () => require('../Actions/btn_like.png'),
+        btnLikeSelected:    () => require('../Actions/btn_like_selected.png'),
+        btnJoin:            () => require('../Actions/btn_join_group.png'),
+        btnJoinSelected:    () => require('../Actions/btn_join_group_selected.png'),
 };

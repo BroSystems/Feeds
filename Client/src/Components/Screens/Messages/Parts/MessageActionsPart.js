@@ -17,7 +17,7 @@ const MessageActionPart = (props) => {
     let actionViews = _.map(Object.values(actions), action => {
         const value = action.value;
         const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
-        const icon = Icons.Actions(iconName);
+        const icon = Icons.Actions[iconName]();
 
         if (!icon) {
             console.log(`${iconName} Icon Doesnt Exist`);

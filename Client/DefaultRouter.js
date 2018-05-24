@@ -35,10 +35,10 @@ const TabStack = createBottomTabNavigator({
         let icon;
         switch (routeName) {
             case 'MyFeeds':
-                icon = Images.BarItems(focused ? 'feedsSelected' : 'feeds');
+                icon = Images.BarItems[focused ? 'feedsSelected' : 'feeds']();
                 break;
             case 'ExploreFeeds':
-                icon = Images.BarItems(focused ? 'exploreSelected' : 'explore');
+                icon = Images.BarItems[focused ? 'exploreSelected' : 'explore']();
                 break;
         }
         // You can return any component that you like here! We usually use an
