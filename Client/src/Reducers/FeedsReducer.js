@@ -11,7 +11,7 @@ const FEEDS_INITIAL_STATE = {
     error: null,
     didLoad: false,
     pageNumber: 0,
-    isLoading: false
+    isLoading: true
 };
 
 export default (state = FEEDS_INITIAL_STATE, action) => {
@@ -20,8 +20,7 @@ export default (state = FEEDS_INITIAL_STATE, action) => {
     switch(action.type) {
         case GET_FEED_LIST_PENDING:
             return { 
-                ...state, 
-                isLoading: true
+                ...state
             };
         case GET_FEED_LIST_FULFILLED:
             const { data, error, feeds, didLoad } = action.payload;
@@ -30,6 +29,7 @@ export default (state = FEEDS_INITIAL_STATE, action) => {
                 error,
                 pageNumber: state.pageNumber + 1,
                 didLoad,
+                isLoading: false
             };
         default: 
             return state
