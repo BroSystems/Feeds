@@ -7,7 +7,8 @@ import {
     ImageBackground,
     Text,
     TouchableOpacity,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    StyleSheet
 } from 'react-native';
 
 export default FeedCell = (props) => {
@@ -42,7 +43,7 @@ export default FeedCell = (props) => {
     );
 };
 
-const styles = {
+const styles = StyleSheet.create({
     header: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -59,7 +60,7 @@ const styles = {
         shadowColor: '#000000',
         shadowRadius: 8,
         aspectRatio: 1,
-        marginBottom: 12
+        paddingBottom: 12
     },
     image: {
         flex:1,
@@ -68,6 +69,7 @@ const styles = {
         borderColor: 'transparent',
         overflow: 'hidden',
         width: '100%',
+        alignSelf: 'stretch',
     },
     topTitles: {
         top: 0,
@@ -103,4 +105,4 @@ const styles = {
         textAlign: 'left',
         width: '100%',
     }
-};
+});
