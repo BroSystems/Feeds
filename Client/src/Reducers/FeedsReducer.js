@@ -1,7 +1,8 @@
 import {
     CREATE_FEED,
     DELETE_FEED,
-    GET_FEED_LIST,
+    GET_FEED_LIST_PENDING,
+    GET_FEED_LIST_FULFILLED,
     FEED_ACTION_FAILED
 } from '../Actions/Types';
 
@@ -10,19 +11,26 @@ const FEEDS_INITIAL_STATE = {
     error: null,
     didLoad: false,
     pageNumber: 0,
-    newFeed: null
+    isLoading: true
 };
 
 export default (state = FEEDS_INITIAL_STATE, action) => {
+    // console.log(action);
+    
     switch(action.type) {
-        case CREATE_FEED: 
-            return { ...state, newFeed: action.payload };
-        case DELETE_FEED:
-            return { ...state, feeds: action.payload };
-        case GET_FEED_LIST:
-            return { ...state, feeds: action.payload, pageNumber: state.pageNumber + 1 };
-        case FEED_ACTION_FAILED:
-            return { ...state, error: action.payload };
+        case GET_FEED_LIST_PENDING:
+            return { 
+                ...state
+            };
+        case GET_FEED_LIST_FULFILLED:
+            const { data, error, feeds, didLoad } = action.payload;
+            return { ...state,
+                feeds,
+                error,
+                pageNumber: state.pageNumber + 1,
+                didLoad,
+                isLoading: false
+            };
         default: 
             return state
     }

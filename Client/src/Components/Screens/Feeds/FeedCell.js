@@ -7,68 +7,69 @@ import {
     ImageBackground,
     Text,
     TouchableOpacity,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    StyleSheet
 } from 'react-native';
 
 export default FeedCell = (props) => {
-    const { item, onPress, style, isHeader = false} = props;
+    const { item, onPress = () => {}, style = {}, isHeader = false} = props;
 
     if (!item) {
         return (
-            <View>
-                <Text>Item is Undefined</Text>
-            </View>
+            <View/>
         )
     }
     return (
+        <View style={[style, isHeader ? styles.header : styles.item]}>
         <TouchableWithoutFeedback
-            style = {[style, isHeader ? styles.header : styles.item]}
+            style = {{flex:1}}
             onPress={event => onPress(item)}>
             <ImageBackground 
                 style ={styles.image} 
-                source={Background}
+                source={{uri: item.image}}
                 resizeMode="stretch">
-                    <View style={styles.topTitles}>
-                        <Text style={styles.category}>FEED CATEGORY</Text>
-                        <Text style={styles.title}>{item.name}</Text>
-                    </View>
-                    <View style={styles.bottomTitles}>
-                        <Text style={styles.subtitle}>
-                            Inside the extraordinary world of Monument Valley 2
-                        </Text>
-                    </View>
-                    <View style={{ height: 8 }}/>
+                <View style={styles.topTitles}>
+                    <Text style={styles.category}>{item.category}</Text>
+                    <Text style={styles.title}>{item.name}</Text>
+                </View>
+                <View style={styles.bottomTitles}>
+                    <Text style={styles.subtitle}>
+                       {item.description}
+                    </Text>
+                </View>
             </ImageBackground>
         </TouchableWithoutFeedback>
+        </View>
     );
 };
 
-const styles = {
+const styles = StyleSheet.create({
     header: {
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'relative',
+        width: '100%',
+        aspectRatio: 2
     },
     item: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flex: 1,
         shadowOffset: {
             width: 0,
             height: 12
         },
-        shadowOpacity: 0.16,
+        shadowOpacity: 0.24,
         shadowColor: '#000000',
-        shadowRadius: 12,
-        marginBottom: 8,
+        shadowRadius: 8,
+        aspectRatio: 1,
+        paddingBottom: 12
     },
     image: {
-        aspectRatio: 1,
-        position: 'relative',
+        flex:1,
         borderRadius: 12,
         borderWidth: 1,
         borderColor: 'transparent',
         overflow: 'hidden',
+        width: '100%',
+        alignSelf: 'stretch',
     },
     topTitles: {
         top: 0,
@@ -104,4 +105,4 @@ const styles = {
         textAlign: 'left',
         width: '100%',
     }
-};
+});
