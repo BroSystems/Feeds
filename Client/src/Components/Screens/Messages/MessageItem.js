@@ -10,27 +10,24 @@ import {
 } from 'react-native-elements';
 
 import {
-    MessageTopPart
+    MessageUserPart,
+    MessageActionsPart
 } from './Parts';
+import MessageDataPart from './Parts/MessageDataPart';
 
 // create a component
 export default MessageItem = (props) => {
-
     if (!props) {
-        return <View/>
+        return <View/>;
     }
 
-    const { top, middle, bottom } = props.message;
+    const { sender, data, actions } = props.message;
 
     return (
-        <Card>
-            <MessageTopPart part={ top }/>
-            <View style={styles.container}>
-                <Text>{middle}</Text>
-            </View>
-            <View style={styles.container}>
-                <Text>{bottom}</Text>
-            </View>
+        <Card key={props.message.id}>
+            <MessageUserPart user={ sender }/>
+            <MessageDataPart data={ data }/>
+            <MessageActionsPart actions={ actions }/>
         </Card>
     );
 };

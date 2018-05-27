@@ -17,11 +17,11 @@
 
 ## DataModel
 
-* |top
+    |top
     |---user
-        |------username
-        |------rank
-* |middle
+    |------username
+    |------rank
+    |middle
     |---message
     |------data
     |---------Detail1
@@ -41,7 +41,7 @@
     |------------Detail2: style
     |------------Image: style
     |------------Description: style
-* |bottom
+    |bottom
     |---actions
     |------labels
     |---------UpVote

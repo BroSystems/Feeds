@@ -5,83 +5,96 @@ import {
     View,
     Text,
     ListView,
-    ImageBackground
+    ImageBackground,
+    ActivityIndicator,
+    StyleSheet
 } from 'react-native';
-
-import {
-
-} from 'react-native-ui-kitten';
-
-import { Actions } from 'react-native-router-flux';
 
 import FeedCell from './FeedCell';
 
 class FeedsListComponent extends Component {
-
+    
     constructor() {
-        super();
-        const Background = '../../../../Design/trees_feed.png';
-        
+        super();        
         this.onRowSelection = this.onRowSelection.bind(this);
-
-        const feeds = {
-            0: { name: 'feed 1', image: Background },
-            1: { name: 'feed 2', image: Background },
-            2: { name: 'feed 3', image: Background },
-            3: { name: 'feed 4', image: Background },
-            4: { name: 'feed 5', image: Background },
-            5: { name: 'feed 6', image: Background },
-            6: { name: 'feed 7', image: Background }
-        }
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-
-        this.state = {
-            feeds,
-            dataSource: ds.cloneWithRows(feeds),
-        };
+        this.renderContent = this.renderContent.bind(this);
     }
-
+    
+    componentWillMount() {
+        this.props.getFeedList(0);
+    }
+    
     renderFeed(feed) {
-        console.log(feed);
         return (
             <FeedCell 
-                item = {feed} 
-                onPress = {this.onRowSelection}/>
+            item = {feed} 
+            onPress = {this.onRowSelection}/>
         );
     }
-
+    
     onRowSelection(item) {
-        console.log(item);
         try {
-            Actions.messageBoard();
+            this.props.navigation.navigate('MessageBoard', { feed: item });
         } catch(error) {
             console.log(error);
         }
     }
-
+    
+    renderContent = () => {
+        
+        const { isLoading = false, error, feeds, dataSource } = this.props;
+        
+        if (isLoading) {
+            return (<ActivityIndicator animating={true}/>)
+        } else if (error != null) {
+            return (<Text>{error}</Text>)
+        } else if (!feeds || feeds.length <= 0 || !dataSource) {
+            return (
+                <Text style={{ textAlign:'center' }}>No Feeds To Present</Text>
+            );
+        } else {
+            return (
+                <ListView
+                style={styles.list}
+                contentContainerStyle={{ margin: 12,}}
+                dataSource={dataSource}
+                renderRow={ feed => this.renderFeed(feed) }
+                />
+            );
+        }
+    }
+    
     render() {
         return (
             <View style = {styles.container}>
-                <ListView
-                    style={{ flex: 1 }}
-                    contentContainerStyle={{ margin: 12,}}
-                    dataSource={this.state.dataSource}
-                    renderRow={ feed => this.renderFeed(feed) }
-                />
+            {this.renderContent()}
             </View>
         );
     }
 }
 
-export default connect(null, actions)(FeedsListComponent)
+const mapStateToProps = ({ feedsReducer }) => {    
+    const { feeds, isLoading, error } = feedsReducer;
+    
+    const ds = new ListView.DataSource({
+        rowHasChanged: (r1, r2) => r1 !== r2
+    });
+        return {
+            dataSource: ds.cloneWithRows(feeds),
+            feeds,
+            error,
+            isLoading
+        }
+}
 
-const styles = {
+export default connect(mapStateToProps, actions)(FeedsListComponent)
+
+const styles = StyleSheet.create({
     container: {
         flex:1,
+        alignItems: 'stretch',
     },
     list: {
         flex:1,
     },
-};
+});
