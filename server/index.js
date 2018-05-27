@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 
 require("./models/User");
-require("./models/Blog");
+require("./models/Group");
 require("./services/passport");
 const mongoUri = `mongodb://localhost:27017/app`;
 const cookieMaxAge = 30 * 24 * 60 * 60 * 1000;
@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app);
-//require("./routes/groupsRoutes")(app);
+require("./routes/groupsRoutes")(app);
 //require("./routes/usersRoutes")(app);
 //require("./routes/messageRoutes")(app);
 
