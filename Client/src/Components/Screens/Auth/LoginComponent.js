@@ -53,7 +53,7 @@ class LoginComponent extends Component {
 
   render() {
     if (this.props.isLogged) {
-      Actions.feedsList();
+      this.props.navigation.navigate('Feeds');
     }
     return (
       <View style={styles.container}>
