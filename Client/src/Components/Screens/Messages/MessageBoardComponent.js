@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as actions from '../../../Actions/MessageBoardActions';
 import {
     View,
@@ -17,6 +18,7 @@ class MessageBoardComponent extends Component {
         super();
         this.renderMessage = this.renderMessage.bind(this);
         this.renderList = this.renderList.bind(this);
+        this.renderHeader = this.renderHeader.bind(this);
     }
 
     componentWillMount() {
@@ -45,13 +47,23 @@ class MessageBoardComponent extends Component {
                 <ListView
                     dataSource={ this.props.dataSource }
                     renderRow={ this.renderMessage }
+                    renderHeader = { this.renderHeader }
                 />
             );
         }
     }
 
+    renderHeader() {
+        return (
+            <FeedCell
+                    isHeader
+                    item={this.props.feed}
+                />
+        );
+    }
+
     renderMessage(message) {
-        return ( 
+        return (
             <MessageItem 
                 style = { this.props.feed}
                 message={ message }
@@ -62,10 +74,6 @@ class MessageBoardComponent extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                <FeedCell
-                    isHeader
-                    item={this.props.feed}
-                />
                 {this.renderList()}
             </View>
         );
