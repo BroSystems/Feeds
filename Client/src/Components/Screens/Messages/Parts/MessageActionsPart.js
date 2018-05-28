@@ -10,13 +10,12 @@ import {
 import Icons from '../../../../../Assets/Images';
 
 // create a component
-const MessageActionPart = (props) => {
-    const { actions } = props;
-    let actionViews = Object.values(actions).forEach(action => {
+export default (props) => {
+    const renderAction = (action) => {
         const value = action.value;
         const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
         const icon = Icons.Actions[iconName]();
-
+        
         if (!icon) {
             console.log(`${iconName} Icon Doesnt Exist`);
         }
@@ -28,19 +27,19 @@ const MessageActionPart = (props) => {
                     <Image
                         style={ styles.icon }
                         source={ icon }
-                        resizeMode = 'contain'
-                        />
+                        resizeMode = 'contain'/>
                 </View>
             </TouchableHighlight>
         );
-    });
-
+    }
+    
+    const { actions } = props;        
     return (
         <View style={styles.container}>
-            {actionViews}
+        { Object.values(actions).map(renderAction) }
         </View>
     );
-};
+}
 
 // define your styles
 const styles = StyleSheet.create({
@@ -50,19 +49,18 @@ const styles = StyleSheet.create({
         height: 44,
         justifyContent: 'space-evenly',
         alignItems: 'stretch',
-        backgroundColor: '#2c3e50',
+        backgroundColor: 'transparent',
     },
     actionContainer: {
         flex:1,
         paddingHorizontal: 12,
         paddingVertical: 4,
-
+        
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#e3e3e3',
         height: '100%',
-        borderColor: '#c3c3c3',
-        borderWidth: 1,
+        borderTopColor: '#c3c3c3',
+        borderTopWidth: 1,
     },
     actionContent: {
         flex: 1,
@@ -76,6 +74,3 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
-
-//make this component available to the app
-export default MessageActionPart;
