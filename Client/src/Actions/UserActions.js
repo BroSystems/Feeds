@@ -6,7 +6,6 @@ import {
     REGISTER_USER,
     LOGIN_USER
 } from './Types';
-import { Actions } from 'react-native-router-flux';
 
 export const usernameChanged = username => {
     return {
@@ -75,4 +74,4 @@ const isValidPassword = password => {
 
 const isUserExist = username => {
     return database.selectOne(row => row.username === username) != null;
-}
+};
