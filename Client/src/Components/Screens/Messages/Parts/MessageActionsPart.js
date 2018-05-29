@@ -3,7 +3,7 @@ import {
     View, 
     Text,
     Image,
-    TouchableHighlight,
+    TouchableOpacity,
     StyleSheet 
 } from 'react-native';
 
@@ -11,33 +11,37 @@ import Icons from '../../../../../Assets/Images';
 
 // create a component
 export default (props) => {
-    const renderAction = (action) => {
-        const value = action.value;
-        const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
-        const icon = Icons.Actions[iconName]();
-        
-        if (!icon) {
-            console.log(`${iconName} Icon Doesnt Exist`);
-        }
-        return (
-            <TouchableHighlight
-                key={ action.label } 
-                style={ styles.actionContainer }>
-                <View style={ styles.actionContent }>
-                    <Image
-                        style={ styles.icon }
-                        source={ icon }
-                        resizeMode = 'contain'/>
-                </View>
-            </TouchableHighlight>
-        );
-    }
-    
-    const { actions } = props;        
+    const { actions, actionHandler } = props;       
+    console.log(`action handler - ${actionHandler}`);
     return (
-        <View style={styles.container}>
-        { Object.values(actions).map(renderAction) }
+        <View 
+            style={styles.container}>
+        { Object.values(actions).map(action => renderAction(action, actionHandler)) }
         </View>
+    );
+}
+
+const renderAction = (action, handler) => {
+    // console.log(handler);
+    const value = action.value;
+    const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
+    const icon = Icons.Actions[iconName]();
+    
+    if (!icon) {
+        console.log(`${iconName} Icon Doesnt Exist`);
+    }
+    return (
+        <TouchableOpacity
+            key={ action.label } 
+            style={ styles.actionContainer }
+            onPress={ () => handler(action) }>
+            <View style={ styles.actionContent }>
+                <Image
+                    style={ styles.icon }
+                    source={ icon }
+                    resizeMode = 'contain'/>
+            </View>
+        </TouchableOpacity>
     );
 }
 
@@ -50,17 +54,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'stretch',
         backgroundColor: 'transparent',
+        borderTopColor: '#c3c3c3',
+        borderTopWidth: 1,
     },
     actionContainer: {
         flex:1,
         paddingHorizontal: 12,
         paddingVertical: 4,
-        
+        backgroundColor: 'transparent',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
-        borderTopColor: '#c3c3c3',
-        borderTopWidth: 1,
     },
     actionContent: {
         flex: 1,
