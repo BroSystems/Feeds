@@ -6,20 +6,17 @@ import {
 } from './Types';
 
 export const fetchMessages = ({page = 0, feed = {}, userId = ''}) => {
+    
     return dispatch => {
-        if (!feed) {
-            dispatch(fetchingMessagesFailed({
-                error:'No Feed Object Was Passed'
-            }));
-        } else {
+        setTimeout(() => {
             dispatch(fetchingMessageSuccess({
-                        page: page + 1,
-                        feed,
-                        userId,
-                        messages: require('../../Data/Messages.json')
-                    }));
-        }
-                
+                page: page + 1,
+                feed,
+                userId,
+                messages: require('../../Data/Messages.json'),
+            }));
+        }, 500);
+        
         // axios.get('https://api.mockaroo.com/api/acb6b990?count=10&key=ac886280')
         //     .then(json => dispatch(fetchingMessageSuccess({ page: page+1, feed, userId, messages: json.data })))
         //     .catch(error => dispatch(fetchingMessagesFailed({ error })));
