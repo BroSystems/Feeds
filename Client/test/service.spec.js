@@ -99,7 +99,6 @@ describe("messages tests", () => {
     const msgs = require('../Data/Messages.json');
     
     const { message_style, message_actions } = feed.config;
-    console.log(message_actions);
     const message = mergeMessageStyleAndActions({
       messages: msgs, 
       style: message_style,
@@ -136,10 +135,11 @@ describe("messages tests", () => {
 
   it("After performing like action new action value must be opposite from before", async () => {
     const value = validLikeAction.value;
-    const actionCreaterValue = resolveMessageAction({ validLikeAction }).payload;
-    const newValue = actionCreaterValue.action.value;
-
-    expect(true).toBe(!value);
+    const actionCreaterValue = resolveMessageAction({ action: validLikeAction })
+    actionCreaterValue(data => {
+      let newValue = data.action.value;
+      expect(newValue).toBe(!value);
+    })
   });
 });
 
@@ -159,7 +159,8 @@ const validLikeAction = () => {
   return {
       "label": "Upvote Driver",
       "value": false,
-      "icon": "btnLike"
+      "icon": "btnLike",
+      "actionType": "LIKE_MESSAGE_OWNER",
   };
 }
 const validMessageObject = () => {
