@@ -5,7 +5,7 @@ export const JOIN_MESSAGE_GROUP = "JOIN_MESSAGE_GROUP";
 
 export const likeMessageOwner = (action) => {
     if (!action) { 
-        return undefinedAction;
+        return undefinedActionError;
     }
     let newValue = !action.value;
     action.value = newValue;
@@ -14,13 +14,13 @@ export const likeMessageOwner = (action) => {
 
 export const joinMessageGroup = (action) => {
     if(!action) {
-        return undefinedAction;
+        return undefinedActionError;
     }
     let newMembersCount = action.value - 1;
     action.value = newMembersCount;
     return { action };
 };
 
-const undefinedAction = {
+const undefinedActionError = {
     error: `Action is Undifined`
 };

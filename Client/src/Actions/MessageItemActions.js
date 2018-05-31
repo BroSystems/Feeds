@@ -18,12 +18,12 @@ export const resolveMessageAction = ({ action, messageID }) => {
             if (!updatedAction || error) {
                 return resolveMessageActionFailed(error);
             }
-            return resolveMessageActionSuccess(updatedAction);
+            const ans = resolveMessageActionSuccess(updatedAction);
         }, 500);
     };
 };
 
-const resolveAction = (action) => {
+export const resolveAction = (action) => {
     switch (action.actionType) {
         case LIKE_MESSAGE_OWNER: return likeMessageOwner(action);
         case JOIN_MESSAGE_GROUP: return joinMessageGroup(action);

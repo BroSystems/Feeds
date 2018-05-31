@@ -11,6 +11,10 @@ import {
   fetchMessages, mergeMessageStyleAndActions
 } from '../src/Actions/MessageBoardActions';
 
+import {
+  resolveMessageAction
+} from '../src/Actions/MessageItemActions';
+
 describe("user actions tests", () => {
   it("should not authenticate unknown users", async () => {
     const username = Chance().email();
@@ -74,7 +78,7 @@ describe("user actions tests", () => {
   afterEach(() => database.empty());
 });
 
-describe("messages actions tests", () => {
+describe("messages tests", () => {
   
   it("each message action should have 'Icon', 'Label', 'Value' and 'ActionType' fields", async () => {
     
@@ -129,6 +133,14 @@ describe("messages actions tests", () => {
     })[0];
     expect(isValid(message)).toBe(true);
   });
+
+  it("After performing like action new action value must be opposite from before", async () => {
+    const value = validLikeAction.value;
+    const actionCreaterValue = resolveMessageAction({ validLikeAction }).payload;
+    const newValue = actionCreaterValue.action.value;
+
+    expect(true).toBe(!value);
+  });
 });
 
 
@@ -143,6 +155,13 @@ Chance().string({
   ])
 });
 
+const validLikeAction = () => {
+  return {
+      "label": "Upvote Driver",
+      "value": false,
+      "icon": "btnLike"
+  };
+}
 const validMessageObject = () => {
   return {
     id:'',

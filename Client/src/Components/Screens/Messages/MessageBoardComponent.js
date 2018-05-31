@@ -13,7 +13,6 @@ import FeedCell from '../Feeds/FeedCell';
 
 
 class MessageBoardComponent extends Component {
-
     constructor() {
         super();
         this.renderMessage = this.renderMessage.bind(this);
@@ -56,9 +55,8 @@ class MessageBoardComponent extends Component {
     renderHeader() {
         return (
             <FeedCell
-                    isHeader
-                    item={this.props.feed}
-                />
+                isHeader
+                item={ this.props.feed }/>
         );
     }
 
