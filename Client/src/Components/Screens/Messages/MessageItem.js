@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import * as messageActions from '../../../Actions/MessageItemActions';
 import { 
     View, 
-    Text, 
+    Text,
+    Alert, 
     StyleSheet 
 } from 'react-native';
 import {
@@ -21,11 +22,6 @@ class MessageItem extends Component {
 
     constructor(props) {
         super(props);
-        if (props) {
-            this.state = {
-                message: props.message
-            };
-        }
         this.renderMessageParts = this.renderMessageParts.bind(this);
         this.actionHandler = this.actionHandler.bind(this);
     }
@@ -65,7 +61,19 @@ class MessageItem extends Component {
     }
 
     render() {
-        if (this.state.message) {
+        if(this.props.error) {
+            Alert.alert(
+                'Error',
+                this.props.error, 
+                [{
+                        text: 'OK',
+                        onPress: () => console.log('OK Pressed')
+                }], {
+                    cancelable: false
+                }
+            );
+        } 
+        if (this.props.message) {
             return this.renderMessageParts(this.props.message);
         } else {
             return this.renderEmptyMessage();
