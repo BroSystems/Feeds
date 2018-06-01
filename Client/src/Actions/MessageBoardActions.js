@@ -1,8 +1,11 @@
 import axios from 'axios';
+import resolveActionForType from './MessageItemDefinedActions';
 
 import {
     FETCH_MESSAGES,
-    POST_MESSAGE
+    POST_MESSAGE,
+    RESOLVE_MESSAGE_ACTION_FAILED,
+    RESOLVE_MESSAGE_ACTION_SUCCESS,
 } from './Types';
 
 export const fetchMessages = ({page = 0, feed = {}, userId = ''}) => {
@@ -76,4 +79,32 @@ export const mergeMessageStyleAndActions = ({ messages = [], style = {}, actions
         });
     });
     return messages;
+};
+
+export const resolveMessageAction = ({ actionType, message }) => {    
+    return dispatch => {
+        setTimeout(() => {
+            const resolvedAction = resolveActionForType(actionType);
+            const { updatedMessage, error } = resolvedAction(message);
+            if (!message || error) {
+                dispatch(resolveMessageActionFailed(error));
+            } else {
+                dispatch(resolveMessageActionSuccess(updatedMessage));
+            }
+        }, 500);
+    };
+};
+
+const resolveMessageActionSuccess = (message) => {
+    return {
+        type: RESOLVE_MESSAGE_ACTION_SUCCESS,
+        payload: message
+    };
+};
+
+const resolveMessageActionFailed = (error) => {
+    return {
+        type: RESOLVE_MESSAGE_ACTION_FAILED,
+        payload: error
+    };
 };
