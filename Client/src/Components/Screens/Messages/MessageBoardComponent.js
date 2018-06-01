@@ -18,18 +18,19 @@ class MessageBoardComponent extends Component {
         this.renderMessage = this.renderMessage.bind(this);
         this.renderList = this.renderList.bind(this);
         this.renderHeader = this.renderHeader.bind(this);
+        this.actionHandler = this.actionHandler.bind(this);
     }
 
     componentWillMount() {
         const feed = this.props.navigation.getParam('feed',{});
         
-        const { messages, error } = this.props;
+        const { messages, error, fetchMessages } = this.props;
         const params = {
             page: messages.page,
             feed,
             userId: ''
         };
-        this.props.fetchMessages(params);
+        fetchMessages(params);
     }
     
     renderList() {
@@ -60,11 +61,26 @@ class MessageBoardComponent extends Component {
         );
     }
 
+    actionHandler(actionType, message) {
+        console.log(`Pressed Action Of Type - ${actionType}`);
+        const { resolveMessageAction } = this.props;
+        if (!resolveMessageAction || !message) {
+            console.log('Action Or Message Undefined');
+            return;
+        }
+        resolveMessageAction({
+            actionType,
+            message
+        });
+    }
+
     renderMessage(message) {
         return (
             <MessageItem 
-                style = { this.props.feed}
+                key={message.id}
+                style = { this.props.feed }
                 message={ message }
+                actionHandler={ this.actionHandler }
             /> 
         );
     }

@@ -12,21 +12,24 @@ import Icons from '../../../../../Assets/Images';
 // create a component
 export default (props) => {
     const { actions, actionHandler } = props;       
-    console.log(`action handler - ${actionHandler}`);
+	// console.log(`action handler - ${actionHandler}`);
+	// console.log(`actions - ${actions}`);
     return (
         <View 
             style={styles.container}>
-        { Object.values(actions).map(action => renderAction(action, actionHandler)) }
+        { Object.values(actions)
+                .map(action => 
+                    renderAction(action, actionHandler)) }
         </View>
     );
 }
 
-const renderAction = (action, handler) => {
-    // console.log(handler);
+const renderAction = (action, actionHandler) => {
+	// console.log(`rendered action is - ${action}`);
     const value = action.value;
     const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
     const icon = Icons.Actions[iconName]();
-    
+	
     if (!icon) {
         console.log(`${iconName} Icon Doesnt Exist`);
     }
@@ -34,7 +37,7 @@ const renderAction = (action, handler) => {
         <TouchableOpacity
             key={ action.label } 
             style={ styles.actionContainer }
-            onPress={ () => handler(action) }>
+            onPress={ () => actionHandler(action.actionType) }>
             <View style={ styles.actionContent }>
                 <Image
                     style={ styles.icon }
