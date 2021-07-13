@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import {
     Avatar,
+    Rating
 } from 'react-native-elements';
 
 // create a component
@@ -24,7 +25,12 @@ const MessageUserPart = (props) => {
                 source={{ uri: user.picture_url }}/>
             <View style={ styles.labelsStack }>
                 <Text style={ styles.text }>{user.username}</Text>
-                <Text style={ styles.text }>{user.rank}</Text>
+                <Rating
+                    readonly
+                    type = "rocket"
+                    imageSize={20}
+                    startingValue={user.rank}
+                    style={styles.rank}/>
             </View>
         </View>
     );
@@ -36,7 +42,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#e3e3e3',
+        backgroundColor: 'white',
         paddingTop: 4,
         paddingHorizontal: 8,
     },

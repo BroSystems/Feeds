@@ -20,8 +20,11 @@ export default DefaultNavigator = () => {
 
 const FeedsStack = createStackNavigator({
     Feeds: FeedsListComponent,
-    MessageBoard: MessageBoardComponent
+    MessageBoard: {
+        screen: MessageBoardComponent,
+    }
 }, {
+    mode:'card',
     initialRouteName: 'Feeds',
 });
 

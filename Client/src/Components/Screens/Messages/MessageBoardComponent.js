@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as actions from '../../../Actions/MessageBoardActions';
 import {
     View,
@@ -12,23 +13,24 @@ import FeedCell from '../Feeds/FeedCell';
 
 
 class MessageBoardComponent extends Component {
-
     constructor() {
         super();
         this.renderMessage = this.renderMessage.bind(this);
         this.renderList = this.renderList.bind(this);
+        this.renderHeader = this.renderHeader.bind(this);
+        this.actionHandler = this.actionHandler.bind(this);
     }
 
     componentWillMount() {
         const feed = this.props.navigation.getParam('feed',{});
         
-        const { messages, error } = this.props;
+        const { messages, error, fetchMessages } = this.props;
         const params = {
             page: messages.page,
             feed,
             userId: ''
         };
-        this.props.fetchMessages(params);
+        fetchMessages(params);
     }
     
     renderList() {
@@ -45,16 +47,40 @@ class MessageBoardComponent extends Component {
                 <ListView
                     dataSource={ this.props.dataSource }
                     renderRow={ this.renderMessage }
+                    renderHeader = { this.renderHeader }
                 />
             );
         }
     }
 
+    renderHeader() {
+        return (
+            <FeedCell
+                isHeader
+                item={ this.props.feed }/>
+        );
+    }
+
+    actionHandler(actionType, message) {
+        console.log(`Pressed Action Of Type - ${actionType}`);
+        const { resolveMessageAction } = this.props;
+        if (!resolveMessageAction || !message) {
+            console.log('Action Or Message Undefined');
+            return;
+        }
+        resolveMessageAction({
+            actionType,
+            message
+        });
+    }
+
     renderMessage(message) {
-        return ( 
+        return (
             <MessageItem 
-                style = { this.props.feed}
+                key={message.id}
+                style = { this.props.feed }
                 message={ message }
+                actionHandler={ this.actionHandler }
             /> 
         );
     }
@@ -62,10 +88,6 @@ class MessageBoardComponent extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                <FeedCell
-                    isHeader
-                    item={this.props.feed}
-                />
                 {this.renderList()}
             </View>
         );

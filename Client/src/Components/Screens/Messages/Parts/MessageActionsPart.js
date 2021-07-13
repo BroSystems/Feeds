@@ -3,44 +3,50 @@ import {
     View, 
     Text,
     Image,
-    TouchableHighlight,
+    TouchableOpacity,
     StyleSheet 
 } from 'react-native';
 
 import Icons from '../../../../../Assets/Images';
 
 // create a component
-const MessageActionPart = (props) => {
-    const { actions } = props;
-    let actionViews = Object.values(actions).forEach(action => {
-        const value = action.value;
-        const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
-        const icon = Icons.Actions[iconName]();
-
-        if (!icon) {
-            console.log(`${iconName} Icon Doesnt Exist`);
-        }
-        return (
-            <TouchableHighlight
-                key={ action.label } 
-                style={ styles.actionContainer }>
-                <View style={ styles.actionContent }>
-                    <Image
-                        style={ styles.icon }
-                        source={ icon }
-                        resizeMode = 'contain'
-                        />
-                </View>
-            </TouchableHighlight>
-        );
-    });
-
+export default (props) => {
+    const { actions, actionHandler } = props;       
+	// console.log(`action handler - ${actionHandler}`);
+	// console.log(`actions - ${actions}`);
     return (
-        <View style={styles.container}>
-            {actionViews}
+        <View 
+            style={styles.container}>
+        { Object.values(actions)
+                .map(action => 
+                    renderAction(action, actionHandler)) }
         </View>
     );
-};
+}
+
+const renderAction = (action, actionHandler) => {
+	// console.log(`rendered action is - ${action}`);
+    const value = action.value;
+    const iconName = `${action.icon}${value == true ? 'Selected' : ''}`;
+    const icon = Icons.Actions[iconName]();
+	
+    if (!icon) {
+        console.log(`${iconName} Icon Doesnt Exist`);
+    }
+    return (
+        <TouchableOpacity
+            key={ action.label } 
+            style={ styles.actionContainer }
+            onPress={ () => actionHandler(action.actionType) }>
+            <View style={ styles.actionContent }>
+                <Image
+                    style={ styles.icon }
+                    source={ icon }
+                    resizeMode = 'contain'/>
+            </View>
+        </TouchableOpacity>
+    );
+}
 
 // define your styles
 const styles = StyleSheet.create({
@@ -50,19 +56,18 @@ const styles = StyleSheet.create({
         height: 44,
         justifyContent: 'space-evenly',
         alignItems: 'stretch',
-        backgroundColor: '#2c3e50',
+        backgroundColor: 'transparent',
+        borderTopColor: '#c3c3c3',
+        borderTopWidth: 1,
     },
     actionContainer: {
         flex:1,
         paddingHorizontal: 12,
         paddingVertical: 4,
-
+        backgroundColor: 'transparent',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#e3e3e3',
         height: '100%',
-        borderColor: '#c3c3c3',
-        borderWidth: 1,
     },
     actionContent: {
         flex: 1,
@@ -76,6 +81,3 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
-
-//make this component available to the app
-export default MessageActionPart;

@@ -1,67 +1,15 @@
 [{
-    "id": "d723de60-2098-46c9-b4a2-fab34efb7e4f",
-    "category": "Board Category",
-    "name": "Stringtough",
-    "image": "http://dummyimage.com/500x500.bmp/dddddd/000000",
-    "description": "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
-    "config": {
-        "message_style": {
-            "from": "collection-pos-1",
-            "to": "collection-pos-2",
-            "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
-            "car_type": "collection-pos-5",
-            "description": "description"
-        },
-        "message_actions": {
-            "like": {
-                "actionType": "LIKE_MESSAGE_OWNER",
-                "icon": "btnLike"
-            },
-            "add_self": {
-                "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "btnJoin"
-            }
-        }
-    }
-}, {
-    "id": "ba0cd038-35c3-417e-a685-62883a3a5399",
-    "category": "Board Category",
-    "name": "Quo Lux",
-    "image": "http://dummyimage.com/500x500.jpg/cc0000/ffffff",
-    "description": "Ut at dolor quis odio consequat varius.",
-    "config": {
-        "message_style": {
-            "from": "collection-pos-1",
-            "to": "collection-pos-2",
-            "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
-            "car_type": "collection-pos-5",
-            "description": "description"
-        },
-        "message_actions": {
-            "like": {
-                "actionType": "LIKE_MESSAGE_OWNER",
-                "icon": "btnLike"
-            },
-            "add_self": {
-                "actionType": "JOIN_MESSAGE_GROUP",
-                "icon": "btnJoin"
-            }
-        }
-    }
-}, {
-    "id": "6fa59d76-5ad4-44e4-985a-3d779503c35d",
+    "id": "3e2a1776-f6c6-4eaf-a744-0785a4b6a358",
     "category": "Board Category",
     "name": "Mat Lam Tam",
     "image": "http://dummyimage.com/500x500.png/ff4444/ffffff",
-    "description": "Nam nulla.",
+    "description": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -70,24 +18,24 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }
         }
     }
 }, {
-    "id": "2494d442-3cbb-49c3-ac58-17e908bd4511",
+    "id": "8c4cbc26-6d8e-433c-b754-a2419e064fbf",
     "category": "Board Category",
-    "name": "Zontrax",
-    "image": "http://dummyimage.com/500x500.jpg/5fa2dd/ffffff",
-    "description": "Morbi porttitor lorem id ligula.",
+    "name": "Tampflex",
+    "image": "http://dummyimage.com/500x500.bmp/dddddd/000000",
+    "description": "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -96,24 +44,24 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }
         }
     }
 }, {
-    "id": "3cc36d45-b5ed-4e5e-80ad-c7a92ee5e0f6",
+    "id": "a1efe6c2-c6ba-49fe-8842-7e54429b6343",
     "category": "Board Category",
-    "name": "Subin",
-    "image": "http://dummyimage.com/500x500.bmp/cc0000/ffffff",
-    "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+    "name": "Quo Lux",
+    "image": "http://dummyimage.com/500x500.bmp/ff4444/ffffff",
+    "description": "Nullam varius. Nulla facilisi.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -122,24 +70,24 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }
         }
     }
 }, {
-    "id": "cd405055-292f-42bd-b335-68adf8f204f0",
+    "id": "b757497a-133a-425b-a231-488988dc7c00",
     "category": "Board Category",
-    "name": "Andalax",
-    "image": "http://dummyimage.com/500x500.png/5fa2dd/ffffff",
-    "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.",
+    "name": "Veribet",
+    "image": "http://dummyimage.com/500x500.jpg/ff4444/ffffff",
+    "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -148,24 +96,24 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }
         }
     }
 }, {
-    "id": "a67f76d8-06c1-44ff-9d60-92f28a2fd2af",
+    "id": "071e4c8c-2989-48a7-98b8-0da0281bd38b",
     "category": "Board Category",
-    "name": "Lotstring",
-    "image": "http://dummyimage.com/500x500.png/5fa2dd/ffffff",
-    "description": "Donec posuere metus vitae ipsum.",
+    "name": "Zamit",
+    "image": "http://dummyimage.com/500x500.jpg/cc0000/ffffff",
+    "description": "Morbi non lectus.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -174,24 +122,50 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }
         }
     }
 }, {
-    "id": "86e9003e-b4df-4775-b32b-9a374550be56",
+    "id": "077c0afc-501b-4517-b1c0-996b7b270ceb",
+    "category": "Board Category",
+    "name": "Prodder",
+    "image": "http://dummyimage.com/500x500.png/dddddd/000000",
+    "description": "In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    "config": {
+        "message_style": {
+            "from": "collection-pos-1",
+            "to": "collection-pos-2",
+            "depart_time": "collection-pos-3",
+            "group": "collection-pos-4",
+            "car_type": "collection-pos-5",
+            "description": "description"
+        },
+        "message_actions": {
+            "like": {
+                "actionType": "LIKE_MESSAGE_OWNER",
+                "icon": "btnLike"
+            },
+            "join": {
+                "actionType": "JOIN_MESSAGE_GROUP",
+                "icon": "btnJoin"
+            }
+        }
+    }
+}, {
+    "id": "84407a6e-1c76-4ff3-ba7b-90e85212199f",
     "category": "Board Category",
     "name": "Home Ing",
-    "image": "http://dummyimage.com/500x500.jpg/ff4444/ffffff",
-    "description": "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",
+    "image": "http://dummyimage.com/500x500.jpg/dddddd/000000",
+    "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -200,24 +174,24 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }
         }
     }
 }, {
-    "id": "e07f692d-f476-43db-bf41-3c39ad16d996",
+    "id": "7d72a3a5-99ac-492b-a2ff-e3573c6b30ef",
     "category": "Board Category",
-    "name": "Hatity",
-    "image": "http://dummyimage.com/500x500.jpg/ff4444/ffffff",
-    "description": "Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+    "name": "Kanlam",
+    "image": "http://dummyimage.com/500x500.png/dddddd/000000",
+    "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -226,24 +200,24 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }
         }
     }
 }, {
-    "id": "7c27907e-5cc6-43d7-8e07-add219e63d42",
+    "id": "f2ae92ce-a1a2-4a71-8196-9a3165cd99b6",
     "category": "Board Category",
-    "name": "Hatity",
-    "image": "http://dummyimage.com/500x500.bmp/dddddd/000000",
-    "description": "Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.",
+    "name": "Lotlux",
+    "image": "http://dummyimage.com/500x500.jpg/cc0000/ffffff",
+    "description": "Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",
     "config": {
         "message_style": {
             "from": "collection-pos-1",
             "to": "collection-pos-2",
             "depart_time": "collection-pos-3",
-            "sits": "collection-pos-4",
+            "group": "collection-pos-4",
             "car_type": "collection-pos-5",
             "description": "description"
         },
@@ -252,7 +226,33 @@
                 "actionType": "LIKE_MESSAGE_OWNER",
                 "icon": "btnLike"
             },
-            "add_self": {
+            "join": {
+                "actionType": "JOIN_MESSAGE_GROUP",
+                "icon": "btnJoin"
+            }
+        }
+    }
+}, {
+    "id": "1859dbf1-5e87-458d-b062-a1bd10b3db9d",
+    "category": "Board Category",
+    "name": "Konklux",
+    "image": "http://dummyimage.com/500x500.png/dddddd/000000",
+    "description": "Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",
+    "config": {
+        "message_style": {
+            "from": "collection-pos-1",
+            "to": "collection-pos-2",
+            "depart_time": "collection-pos-3",
+            "group": "collection-pos-4",
+            "car_type": "collection-pos-5",
+            "description": "description"
+        },
+        "message_actions": {
+            "like": {
+                "actionType": "LIKE_MESSAGE_OWNER",
+                "icon": "btnLike"
+            },
+            "join": {
                 "actionType": "JOIN_MESSAGE_GROUP",
                 "icon": "btnJoin"
             }

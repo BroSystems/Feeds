@@ -16,11 +16,14 @@ export const getFeedList = ({ pageNumber }) => {
     
     return dispatch => {
 
-        dispatch(fetchingFeedsPending());
-
-        axios.get('https://api.mockaroo.com/api/55d750c0?count=10&key=ac886280')
-            .then(json => dispatch(fetchingFeedsSuccess(json.data)))
-            .catch(error => dispatch(fetchingFeedsFailed(error)));
+        setTimeout(() => {
+            dispatch(fetchingFeedsSuccess(require('../../Data/FeedsList.json')));
+        }, 500);
+        
+        // dispatch(fetchingFeedsPending());
+        // axios.get('https://api.mockaroo.com/api/55d750c0?count=10&key=ac886280')
+        //     .then(json => dispatch(fetchingFeedsSuccess(json.data)))
+        //     .catch(error => dispatch(fetchingFeedsFailed(error)));
     };
 };
 

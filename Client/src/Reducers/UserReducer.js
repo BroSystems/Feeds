@@ -11,7 +11,8 @@ const USER_INITIAL_STATE = {
     password: '',
     isPending: false,
     isLogged: false,
-    isRegistered: false
+    isRegistered: false,
+    error: null
 };
 
 export default (state = USER_INITIAL_STATE, action) => {

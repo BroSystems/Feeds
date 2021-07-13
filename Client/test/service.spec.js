@@ -11,6 +11,10 @@ import {
   fetchMessages, mergeMessageStyleAndActions
 } from '../src/Actions/MessageBoardActions';
 
+import {
+  resolveMessageAction
+} from '../src/Actions/MessageItemActions';
+
 describe("user actions tests", () => {
   it("should not authenticate unknown users", async () => {
     const username = Chance().email();
@@ -74,7 +78,7 @@ describe("user actions tests", () => {
   afterEach(() => database.empty());
 });
 
-describe("messages actions tests", () => {
+describe("messages tests", () => {
   
   it("each message action should have 'Icon', 'Label', 'Value' and 'ActionType' fields", async () => {
     
@@ -95,7 +99,6 @@ describe("messages actions tests", () => {
     const msgs = require('../Data/Messages.json');
     
     const { message_style, message_actions } = feed.config;
-    console.log(message_actions);
     const message = mergeMessageStyleAndActions({
       messages: msgs, 
       style: message_style,
@@ -129,6 +132,15 @@ describe("messages actions tests", () => {
     })[0];
     expect(isValid(message)).toBe(true);
   });
+
+  it("After performing like action new action value must be opposite from before", async () => {
+    const value = validLikeAction.value;
+    const actionCreaterValue = resolveMessageAction({ action: validLikeAction })
+    actionCreaterValue(data => {
+      let newValue = data.action.value;
+      expect(newValue).toBe(!value);
+    })
+  });
 });
 
 
@@ -143,6 +155,14 @@ Chance().string({
   ])
 });
 
+const validLikeAction = () => {
+  return {
+      "label": "Upvote Driver",
+      "value": false,
+      "icon": "btnLike",
+      "actionType": "LIKE_MESSAGE_OWNER",
+  };
+}
 const validMessageObject = () => {
   return {
     id:'',
